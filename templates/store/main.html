@@ -20,7 +20,7 @@
     </div>
   </section>
 
-  {% comment %} CART SECTION {% endcomment %}
+  {% comment %} CARD SECTION {% endcomment %}
 
   <main>
   
@@ -33,26 +33,28 @@
         
 
             {% for produsct in products %}
+
           <div class="col">
             <div class="card shadow-sm">
                 <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
   
               <div class="card-body">
-                <p class="card-text"> <a class="text-dark text-decoration-none" href="">{{ product.title }}</a></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                  </div>
-                </p>
+                <p class="card-text"> 
+                <a class="text-dark text-decoration-none" href="">{{ product.title }}</a>
+            </p>
                   <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted"> Audio Content - 10 min </small>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
-
           {% endfor %}
+          </div>
+        </div>
+    </div>
+
+
+          
           
   </main>
 
@@ -60,4 +62,4 @@
 
 {% endblock %}
 
-{% comment %} END CART SECTION {% endcomment %}
+{% comment %} END CARD SECTION {% endcomment %}
