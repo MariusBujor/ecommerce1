@@ -10,14 +10,12 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
 
+    def get_absolute_url(self):
+        return reverse('store:category_list', args=[self.slug])
 
-def get_absolute_url(self):
-    return reverse('store:category_list', args=[self.slug])
-
-
-def __str__(self):
-    return self.name
-
+    def __str__(self):
+        return self.name
+        
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
