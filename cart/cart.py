@@ -1,3 +1,8 @@
+from decimal import Decimal
+
+from store.models import Product
+
+
 class Cart():
     """
     A base Cart class, providing some default behaviors that
@@ -17,7 +22,7 @@ class Cart():
         Adding and updating the users basket session data
 
         """
-        product_id = product.id 
+        product_id = str(product.id)
 
         if product_id not in self.cart:
             self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
@@ -43,18 +48,14 @@ class Cart():
                 item['total_price'] = item['price'] * item['qty']
                 yield item
 
-
-
-  
-
-
-
-
         def __len__(self):
             """ 
             Get the cart data and count the qty of items 
             """
             return sum(item['qty'] for item in self.cart.values())
+        
+        def get_total_price(self):
+            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
 
 
 
