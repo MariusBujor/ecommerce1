@@ -22,5 +22,16 @@ def cart_add(request):
         cartqty = cart.__len__()
         response = JsonResponse({'qty': cartqty})
 
-        return response 
+        return response
+
+def cart_delete(request):
+    cart = Cart(request)
+    if request.POST.get('action') == 'post':
+        product_id = int(request.POST.get('productid'))
+        cart.delete(product=product_id)
+
+
+
+
+
 
