@@ -1,6 +1,3 @@
-
-
-
 class Cart():
     """
     A base Cart class, providing some default behaviors that
@@ -28,6 +25,30 @@ class Cart():
         # Save the session
 
         self.session.modified = True
+
+        def __iter__(self):
+            """
+            Collect the product_id in the session data to query the database
+            and return products
+            """
+            product_ids = self.cart.keys()
+            products = Product.products.filter(id__in=product_ids)
+            cart = self.cart.copy()
+
+            for product in products:
+                cart[str(product.id)]['product'] = product
+
+            for item in cart.values():
+                item['price'] = Decimal(item['price'])
+                item['total_price'] = item['price'] * item['qty']
+                yield item
+
+
+
+  
+
+
+
 
         def __len__(self):
             """ 
