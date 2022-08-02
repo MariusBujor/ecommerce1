@@ -10,7 +10,7 @@
     <h1 class="h5">Shopping Cart</h1>
     {% for item in cart %}
     {% with product=item.product %}
-    <div class="row mb-4 border">
+    <div data-index="{{product.id}}"class="row mb-4 border product-item">
         <div class="col-md-3 col-lg-2 order-md-first bg-light">
             <img class="img-fluid mx-auto d-block" width="120px" alt="Responsive image" src="{{ product.image.url }}">
           </div>
@@ -62,6 +62,7 @@
 <script>
   $(document).on('click', '.delete-button', function (e) {
       e.preventDefault();
+      var prodid = $(this).data('index');
       $.ajax({
           type: 'POST',
           url: '{% url "cart:cart_delete" %}',
@@ -71,6 +72,7 @@
               action: 'post'
           },
           success: function (json){
+            $('.product-item[data-index="'+ prodid +'""]').remove();
           },
           error: function (xhr, errmsg, err) {}  
       });
