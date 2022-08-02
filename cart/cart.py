@@ -46,7 +46,7 @@ class Cart():
             item['total_price'] = item['price'] * item['qty']
             yield item
 
-    # def __len__(self):   NOT WORKING
+    # def __len__(self): NOT WORKING
     #     return sum(item['qty'] for item in self.cart.values())
         
     def get_total_price(self):
@@ -60,10 +60,25 @@ class Cart():
             
         if product_id in self.cart:
             del self.cart[product_id]
+            print(product_id)
             self.save()
-            
-        def save(self):
-            self.session.modified = True
+        
+    def update(self, product, qty):
+        """
+        Update values in session data
+        """
+        product_id = str(product)
+        if product_id in self.cart:
+            self.cart[product_id]['qty'] = qty
+
+        self.save()
+
+    def save(self):
+        self.session.modified = True
+
+
+
+   
 
 
 
