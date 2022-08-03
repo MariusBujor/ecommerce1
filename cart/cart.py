@@ -28,6 +28,7 @@ class Cart():
             self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
 
         self.save()
+        print(self.cart)
 
     def __iter__(self):
         """
@@ -35,7 +36,7 @@ class Cart():
         and return products
         """
         product_ids = self.cart.keys()
-        products = Product.products.filter(id__in=product_ids)
+        products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
 
         for product in products:
@@ -46,8 +47,10 @@ class Cart():
             item['total_price'] = item['price'] * item['qty']
             yield item
 
-    # def __len__(self): NOT WORKING
-    #     return sum(item['qty'] for item in self.cart.values())
+    def __len__(self):
+        # return sum(item['qty'] for item in self.cart.values())
+        print(len(self.cart))
+        return len(self.cart)
         
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
