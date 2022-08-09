@@ -2,6 +2,7 @@ from django import forms
 from .models import UserBase
 from django.contrib.auth.forms import (AuthenticationForm)
 
+
 class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(widget=forms.TextInput(
@@ -55,6 +56,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Repeat Password'})
 
+
 class UserEditForm(forms.ModelForm):
 
     email = forms.EmailField(label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
@@ -74,5 +76,24 @@ class UserEditForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['user_name'].required = True
         self.fields['email'].required = True
+
+
+class PwdResetForm(PasswordResetForm):
+
+    email = forms.EmailField(max_length=254, widget=forms. 
+    TextInput(
+        attrs={'class': 'form-control mb-3', 'placeholder': 
+        'Email', 'id': 'form-email'}))
+
+    def clean_email(self):
+     email = self.cleaned_data['email']
+     u = UserBase.objects.filter(email=email)
+
+     if not u:
+        raise forms.ValidationError('Unfortunatley we can not find that email address')
+        return email
+
+
+
 
 
