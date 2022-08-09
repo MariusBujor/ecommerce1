@@ -30,6 +30,7 @@ def edit_details(request):
     
     return render(request,
                   'account/user/edit_details.html', {'user_form': user_form})
+                  
 
 @login_required
 def delete_user(request):
