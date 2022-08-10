@@ -1,0 +1,45 @@
+{% extends "../../store/base.html" %}
+{% block title %} Payment{% endblock %}
+{% block content %}
+
+<style>
+
+    .account-form input,
+     { 
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .form-control {
+        border: 2px solid #ccc;
+    }
+
+    .account-form input:focus { 
+        border-color: #1497ff;
+        box-shadow: none;
+    }
+
+</style>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div id="payment-form" class="col-12 col-lg-6 mx-auto">
+                            <h3 class="mb-3">Billing address</h3>
+                            <!-- Error message in this element -->
+                            <div id="card-errors" class="a" role="alert"></div>
+                            <form>
+
+
+                            </form>
+                        </div>    
+                    </div>    
+                </div>    
+            </div>    
+        </div>    
+    </div>    
+</div>
+{% endblock %}    

@@ -7,10 +7,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+
 from .forms import RegistrationForm, UserEditForm
-# from .tokens import account_activation_token
 
 from .models import UserBase
+from .tokens import account_activation_token
 
 
 @login_required
@@ -54,14 +55,13 @@ def account_register(request):
             # Setup email
             current_site = get_current_site(request)
             subject = 'Activate your Account'
-            message = render_to_string('account/registration/account_activation_email.html', {
-               'user': user,
-               'domain': current_site.domain,
-               'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-               'token': account_activation_token.make_token(user),
+            message = render_to_string(
+                'account/registration/account_activation_email.html', {'user': user, 'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-
+            return HttpResponse('registered succesfully and activation sent')
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
@@ -80,17 +80,3 @@ def account_activate(request, uidb64, token):
         return redirect('account:dashboard')
     else:
         return render(request, 'account/registration/activation_invalid.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-

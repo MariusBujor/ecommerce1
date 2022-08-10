@@ -81,8 +81,7 @@ class UserEditForm(forms.ModelForm):
 class PwdResetForm(PasswordResetForm):
 
     email = forms.EmailField(max_length=254, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder':
-               'Email', 'id': 'form-email'}))
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -92,7 +91,7 @@ class PwdResetForm(PasswordResetForm):
             'Unfortunatley we can not find that email address')
     return email
     
-
+    
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
         label='New password', widget=forms.PasswordInput(
