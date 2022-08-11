@@ -1,7 +1,10 @@
+import stripe
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from cart.cart import Cart
+
 
 @login_required
 def CartView(request):
@@ -10,7 +13,7 @@ def CartView(request):
     total = total.replace('.', '')
     total = int(total)
 
-    stripe.api_key = 'pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'
+    stripe.api_key = 'sk_test_51LVDiHFR4QsZUb5p0tejkzM9UmMxjVI6bV72sPriGDkzQBEtpRgnzVBrNndY2p5GKunLV3xX1aZWXBMkSbHaMPQH00jVuTaRMY'
     intent = stripe.PaymentIntent.create(
 
         amount=total,
