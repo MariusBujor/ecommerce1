@@ -32,7 +32,6 @@
                             <!-- Error message in this element -->
                             <div id="card-errors" class="a" role="alert"></div>
                             <form>
-                                Customer Name
                                 <div class="row g-3">
                                     <div "col-sm-7">
                                      <label for="firstName" class="form-label">Customer Name</label>
@@ -40,7 +39,6 @@
                                     </div class="invalid-feedback">Valid first name is required.
                                 </div>
                                 </div>
-                        
                                 <div class="col-12">
                                         <label for="email" class="form-label">Email
                                             <span class="text-muted">(Optional)</span></label>
@@ -49,14 +47,12 @@
                                                 Please enter a valid email address for shipping updates.
                                     </div>
                                 </div>
-                                address
                                 <div class="col-12">
                                         <label for="address" class="form-label">Addres</label>
                                         <input type="text" class="form-control" id="custAdd" placeholder="1234 Main St" required>
                                         <div class="invalid-feedback">Please enter your shipping address.
                                     </div>
                                 </div>
-                                country
                                 <div class="col-md-5">
                                         <label for="country" class="form-label">Country</label>
                                         <select class="form-select" id="country" required>
@@ -65,7 +61,6 @@
                                         </select>
                                         <div class="invalid-feedback">Please select a valid country.</div>
                                 </div>
-                                state
                                 <div class="col-md-4">
                                         <label for="state" class="form-label">County</label>
                                         <select class="form-select" id="state" required>
@@ -74,7 +69,6 @@
                                         <div class="invalid-feedback">Please provide a valid county.
                                     </div>
                                 </div>
-                                post code
                                 <div class="col-md-3">
                                         <label for="Postcode" class="form-label">Postcode</label>
                                         <input type="text" class="form-control" id="postCode" placeholder="" required>
@@ -82,6 +76,8 @@
                                     </div>
                                 </div>
                                 </div>
+
+                                <button id="submit" class="btn btn-primary w-100 fw-bold"data-secret="{{ client_secret }}">Pay</button>
                             </form>
                         </div>    
                     </div>    
@@ -90,4 +86,10 @@
         </div>    
     </div>    
 </div>
+<script>
+    {% comment %} Make csrf token availble in JS files {% endcomment %}
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'payment/index.js' %}" data-rel-js></script>
 {% endblock %}    
