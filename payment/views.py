@@ -18,5 +18,5 @@ def CartView(request):
         metadata={'userid': request.user.id}
     )
 
-    return render(request, 'payment/home.html')
+    return render(request, 'payment/home.html', {'client_secret': intent.client_secret})
 
