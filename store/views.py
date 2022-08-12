@@ -9,7 +9,7 @@ def categories(request):
     }
 
 
-def all_products(request):
+def product_all(request):
     products = Product.objects.all()
     return render(request, 'store/main.html', {'products': products})
 
