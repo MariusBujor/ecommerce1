@@ -4,8 +4,6 @@ from django.views.generic import TemplateView
 from . import views
 from .forms import (PwdResetConfirmForm, PwdResetForm, UserLoginForm)
 
-
-
 app_name = 'account'
 
 urlpatterns = [

@@ -66,18 +66,22 @@ class Cart():
             print(product_id)
             self.save()
         
-    def update(self, product, qty):
-        """
-        Update values in session data
-        """
-        product_id = str(product)
-        if product_id in self.cart:
-            self.cart[product_id]['qty'] = qty
+    # def update(self, product, qty):
+    #     """
+    #     Update values in session data
+    #     """
+    #     product_id = str(product)
+    #     if product_id in self.cart:
+    #         self.cart[product_id]['qty'] = qty
 
-        self.save()
+    #     self.save()
 
     def save(self):
         self.session.modified = True
+
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.save()
 
 
 

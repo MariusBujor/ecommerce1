@@ -5,6 +5,7 @@ from django.db import models
 
 from store.models import Product
 
+
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
     full_name = models.CharField(max_length=50)
@@ -19,8 +20,11 @@ class Order(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
     def __str__(self):
+
         return str(self.created)
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
