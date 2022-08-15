@@ -10,13 +10,15 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from .forms import RegistrationForm, UserEditForm
 
+from orders.views import user_orders
+
 from .models import UserBase
 from .tokens import account_activation_token
 
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/user/dashboard.html')
+    return render(request, 'account/user/dashboard.html',{'orders': orders})
 
 
 @login_required
