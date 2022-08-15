@@ -122,6 +122,10 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+# Cart session Id
+
+CART_SESSION_ID ='cart'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -134,4 +138,9 @@ LOGIN_URL = '/account/login/'
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Stripe Payment 
+PUBLISHABLE_KEY = ''
+SECRET_KEY = ''
+STRIPE_ENDPOINT_SECRET = ''
 
