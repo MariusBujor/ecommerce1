@@ -56,7 +56,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store.views.categories',  # 
+                'store.views.categories',  #
                 'cart.context_processors.cart',
             ],
         },
@@ -114,9 +114,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [		
-    os.path.join(BASE_DIR, "static")		
-]		
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 
 MEDIA_URL = '/media/'
@@ -139,8 +139,7 @@ LOGIN_URL = '/account/login/'
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Stripe Payment 
+# Stripe Payment
 PUBLISHABLE_KEY = 'pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'
 SECRET_KEY = 'sk_test_51LVDiHFR4QsZUb5p0tejkzM9UmMxjVI6bV72sPriGDkzQBEtpRgnzVBrNndY2p5GKunLV3xX1aZWXBMkSbHaMPQH00jVuTaRMY'
 STRIPE_ENDPOINT_SECRET = ''
-

@@ -19,7 +19,6 @@ class Cart():
         self.cart = cart
 
     def add(self, product, qty):
-
         """
         Adding and updating the users basket session data
 
@@ -27,7 +26,8 @@ class Cart():
         product_id = str(product.id)
 
         if product_id not in self.cart:
-            self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
+            self.cart[product_id] = {'price': str(
+                product.price), 'qty': int(qty)}
 
         self.save()
         print(self.cart)
@@ -50,10 +50,10 @@ class Cart():
             yield item
 
     def __len__(self):
-        # return sum(item['qty'] for item in self.cart.values())
+        return sum(item['qty'] for item in self.cart.values())
         print(len(self.cart))
         return len(self.cart)
-        
+
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
 
@@ -62,12 +62,12 @@ class Cart():
         Delete item from session data
         """
         product_id = str(product)
-            
+
         if product_id in self.cart:
             del self.cart[product_id]
             print(product_id)
             self.save()
-        
+
     # def update(self, product, qty):
     #     """
     #     Update values in session data
