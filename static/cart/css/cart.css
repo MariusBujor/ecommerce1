@@ -1,0 +1,11 @@
+.basket-btn{
+    position: relative;
+}
+
+.basket-btn:hover, .basket-btn:focus, 
+.basket-btn:active, .basket-btn.active{
+    color:brown;
+    transition-duration: 0.4s;
+    background-color: #fff;
+
+}
