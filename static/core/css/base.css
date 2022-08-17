@@ -45,3 +45,21 @@ html, body, p, div{
 .fw500{
     font-size: 500;
 }
+
+/* Navigation  */
+
+.logo {
+    width: 49px;
+    height: auto;
+}
+ 
+/* SM / MD / LG */
+@media (min-width: 768px){.logo {
+    width: 49px;
+}}
+@media (min-width: 922px){.logo {
+    width: 60px;
+}}
+@media (min-width: 1200px){.logo {
+    width: 70px;
+}}
