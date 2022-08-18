@@ -51,11 +51,22 @@ class Cart():
 
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
-        print(len(self.cart))
         return len(self.cart)
 
+    def get_subtotal_price(self):
+            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+           
     def get_total_price(self):
-        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+
+        subtotal = sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+
+        if subtotal == 0:
+            shipping = Decimal(0.00)
+        else: 
+            shipping = Decimal(0.00)
+
+        total = subtotal + Decimal(shipping)
+        return total
 
     def delete(self, product):
         """
