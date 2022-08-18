@@ -1,14 +1,24 @@
-import stripe
 import json
 
-from django.shortcuts import render
-from django.http.response import HttpResponse
+import stripe
 from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic.base import TemplateView
 
 from cart.cart import Cart
 from orders.views import payment_confirmation
 
+
+def order_placed(request):
+    cart = Cart(request)
+    cart.clear()
+    return render(request, 'payment/orderplace.html')
+
+class Error(TemplateView):
+    template_name = 'payment/error.html'
+    
 
 @login_required
 def CartView(request):
@@ -51,10 +61,7 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
-def order_placed(request):
-    cart = Cart(request)
-    cart.clear()
-    return render(request, 'payment/orderplace.html')
+
 
 
 
