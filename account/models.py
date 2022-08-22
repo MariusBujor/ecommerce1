@@ -6,7 +6,6 @@ from django.db import models
 from django.core.mail import send_mail
 
 
-
 class CustomAccountManager(BaseUserManager):
 
     def create_superuser(self, email, user_name, password, **other_fields):

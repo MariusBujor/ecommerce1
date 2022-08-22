@@ -10,4 +10,3 @@ urlpatterns = [
     path('error/', views.Error.as_view(), name='error'),
     path('webhook/', views.stripe_webhook),
 ]
-

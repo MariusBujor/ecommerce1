@@ -12,7 +12,7 @@ from orders.views import user_orders
 from .forms import RegistrationForm, UserEditForm
 
 from .models import UserBase
-#from .tokens import account_activation_token
+from .token import account_activation_token
 
 
 @login_required

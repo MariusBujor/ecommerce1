@@ -54,11 +54,11 @@ class Cart():
         return len(self.cart)
 
     def get_subtotal_price(self):
-            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
            
     def get_total_price(self):
 
-        subtotal = sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+        subtotal = sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
 
         if subtotal == 0:
             shipping = Decimal(0.00)
@@ -79,15 +79,15 @@ class Cart():
             print(product_id)
             self.save()
 
-    # def update(self, product, qty):
-    #     """
-    #     Update values in session data
-    #     """
-    #     product_id = str(product)
-    #     if product_id in self.cart:
-    #         self.cart[product_id]['qty'] = qty
+    def update(self, product, qty):
+        """
+        Update values in session data
+        """
+        product_id = str(product)
+        if product_id in self.cart:
+            self.cart[product_id]['qty'] = qty
 
-    #     self.save()
+        self.save()
 
     def save(self):
         self.session.modified = True

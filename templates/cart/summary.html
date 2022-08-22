@@ -1,4 +1,4 @@
-{% extends "../base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 {% block title %}Cart Summary{% endblock %}
 
@@ -42,7 +42,7 @@
     {% endwith %}
     {% endfor %}
     <div class="col-12 text-end">
-        <div class ="h6 fw-bold"> Sub Total: € <div id="subtotal" class="d-iline-flex">{{cart.get_total_price}}</div></div>
+        <div class ="h6 fw-bold"> Sub Total :<div id="subtotal" class="d-iline-flex"><span> € <span>{{cart.get_total_price}}</div></div>
         </div>
     </div>
 </main>

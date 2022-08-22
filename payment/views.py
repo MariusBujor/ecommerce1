@@ -15,6 +15,7 @@ def order_placed(request):
     cart = Cart(request)
     cart.clear()
     return render(request, 'payment/orderplace.html')
+    
 
 class Error(TemplateView):
     template_name = 'payment/error.html'

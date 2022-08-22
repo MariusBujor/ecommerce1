@@ -60,6 +60,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Repeat Password'})
 
+
 class PwdResetForm(PasswordResetForm):
 
     email = forms.EmailField(max_length=254, widget=forms.TextInput(
@@ -73,6 +74,7 @@ class PwdResetForm(PasswordResetForm):
                 'Unfortunatley we can not find that email address')
             return email
 
+
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
         label='New password', widget=forms.PasswordInput(
@@ -80,7 +82,6 @@ class PwdResetConfirmForm(SetPasswordForm):
     new_password2 = forms.CharField(
         label='Repeat password', widget=forms.PasswordInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
-
 
 
 class UserEditForm(forms.ModelForm):
