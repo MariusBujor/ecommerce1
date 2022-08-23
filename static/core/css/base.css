@@ -63,3 +63,8 @@ html, body, p, div{
 @media (min-width: 1200px){.logo {
     width: 70px;
 }}
+
+/* Footer */
+footer > div > div > ul > li{
+    padding-bottom:8px;
+}
