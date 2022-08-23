@@ -29,14 +29,14 @@ class RegistrationForm(forms.ModelForm):
         model = UserBase
         fields = ('user_name', 'email',)
 
-    def clean_username(self):
+    def clean_user_name(self):
         user_name = self.cleaned_data['user_name'].lower()
         r = UserBase.objects.filter(user_name=user_name)
         if r.count():
             raise forms.ValidationError("Username already exists")
         return user_name
 
-    def clean_password(self):
+    def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords do not match.')
@@ -72,7 +72,7 @@ class PwdResetForm(PasswordResetForm):
         if not u:
             raise forms.ValidationError(
                 'Unfortunatley we can not find that email address')
-            return email
+        return email
 
 
 class PwdResetConfirmForm(SetPasswordForm):
