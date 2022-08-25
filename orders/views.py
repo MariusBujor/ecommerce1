@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 
 from cart.cart import Cart
 from .models import Order, OrderItem
@@ -7,7 +7,8 @@ from .models import Order, OrderItem
 
 def add(request):
     cart = Cart(request)
-    if request.POST.get('auction') == 'post':
+    if request.POST.get('action') == 'post':
+        print('MADE IT HERE')
 
         order_key = request.POST.get('order_key')
         user_id = request.user.id
@@ -18,7 +19,7 @@ def add(request):
             pass
         else:
             order = Order.objects.create(
-                user_id=user_id, full_name='name', address1='add1', total_paid=carttotal, order_key=order_key)
+                user=request.user, full_name=request.POST.get('full_name'), address1=request.POST.get('custAdd'), order_key=order_key)
             order_id = order.pk
 
             for item in cart:
@@ -26,6 +27,7 @@ def add(request):
 
         response = JsonResponse({'success': 'Return something'})
         return response
+    return HttpResponse('hello')
 
 
 def payment_confirmation(data):

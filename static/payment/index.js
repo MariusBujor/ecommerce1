@@ -1,11 +1,15 @@
-var stripe = Stripe('sk_test_51LVDiHFR4QsZUb5p0tejkzM9UmMxjVI6bV72sPriGDkzQBEtpRgnzVBrNndY2p5GKunLV3xX1aZWXBMkSbHaMPQH00jVuTaRMY');
+let stripe = Stripe('pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'); 
+// need publish key 
 
-var elem = document.getElementById('submit');
+let form = document.getElementById('payment-form');
+console.log(form)
+
+let elem = document.getElementById('submit');
 clientsecret = elem.getAttribute('data-secret');
 
 // Set up Stripe.js and Elements to use in checkout form
-var elements = stripe.elements();
-var style = {
+let elements = stripe.elements();
+let style = {
     base: {
         color: "#000",
         lineHeight: '2.4',
@@ -13,13 +17,13 @@ var style = {
     }
 };
 
-    var card = elements.create("card", {
+    let card = elements.create("card", {
     style: style
     });
     card.mount("#card-element");
 
     card.on('change', function(event) {
-    var displayError = document.getElementById('card-errors')
+    let displayError = document.getElementById('card-errors')
     if (event.error) {
         displayError.textContent = event.error.message;
         $('#card-errors').addClass('alert alert-info');
@@ -29,23 +33,27 @@ var style = {
     }
     });
 
-    var form = document.getElementById('payment-form');
+    
 
-    form.addEventListener('submit', function (ev) 
+    form.addEventListener('submit', function(ev) 
     {
+      console.log('here')
     ev.preventDefault();
 
-    var custName = document.getElementById("custName").value;
-    var custAdd = document.getElementById("custAdd").value;
-    var postCode = document.getElementById("postCode").value;
+    let custName = document.getElementById("custName").value;
+    console.log(custName)
+    let custAdd = document.getElementById("custAdd").value;
+    let postCode = document.getElementById("postCode").value;
 
     $.ajax({
             type: "POST",
-            url: 'http://127.0.0.1:8000/orders/add/',
+            url: '/orders/add/',
             data: {
                 order_key: clientsecret,
                 csrfmiddlewaretoken: CSRF_TOKEN,
                 action: "post",
+                full_name: custName,
+                custAdd: custAdd,
         },
         success: function (json) {
           console.log(json.success)
@@ -67,13 +75,16 @@ var style = {
             } else {
               if (result.paymentIntent.status === 'succeeded'){
                 console.log('payment processed')
-                window.location.replace("http://127.0.0.1:8000/payment/orderplaced/");
+                window.location.replace("/payment/orderplaced/");
               }
             }
           });
 
         },
-      error: function (xhr, errmsg, err) {},
+      error: function (xhr, errmsg, err) {console.log(errmsg), console.log(err)},
     });
 
 });
+
+
+

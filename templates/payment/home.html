@@ -28,11 +28,11 @@
             <div class="login d-flex align-items-center py-5">
                 <div class="container">
                     <div class="row">
-                        <div id="payment-form" class="col-12 col-lg-6 mx-auto">
+                        <div  class="col-12 col-lg-6 mx-auto">
                             <h4 class="mb-3">Billing address</h4>
                             <!-- Error message in this element -->
                             <div id="card-errors" class="a" role="alert"></div>
-                            <form>
+                            <form id="payment-form">
                                 <div class="row g-3">
                                     <div "col-sm-7">
                                      <label for="firstName" class="form-label">Customer Name</label>
@@ -85,7 +85,7 @@
                                 </div>
 
                                 <hr class="my-4">
-                                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay</button>
+                                <button type='submit' id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay</button>
                             </form>
                         </div>    
                     </div>    
@@ -97,6 +97,8 @@
 <script>
     {% comment %} Make csrf token availble in JS files {% endcomment %}
     var CSRF_TOKEN = '{{ csrf_token }}';
+    let addOrderUrl = "{% url 'add' %}"
+    console.log(addOrderUrl)
 </script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'payment/index.js' %}" data-rel-js></script>
