@@ -43,11 +43,11 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
     # Delivery details
-    country = CountryField(blank_label='Country *',null = False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     phone_number = models.CharField(max_length=15, blank=True)
     postcode = models.CharField(max_length=12, blank=True)
     address_line_1 = models.CharField(max_length=150, blank=True)
-    # address_line_2 = models.CharField(max_length=150, blank=True)
+    address_line_2 = models.CharField(max_length=150, blank=True)
     town_city = models.CharField(max_length=150, blank=True)
 
     # User Status

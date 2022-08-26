@@ -23,7 +23,7 @@ def add(request):
             order_id = order.pk
 
             for item in cart:
-                OrderItem.objects.create(order_id=order_id, product=item['product'], price=item['price'])
+                OrderItem.objects.create(order_id=order_id, product=item ['product'], price=item['price'])
 
         response = JsonResponse({'success': 'Return something'})
         return response

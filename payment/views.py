@@ -43,8 +43,7 @@ def CartView(request):
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
-    event = None 
-
+    event = None
     try:
         event = stripe.Event.construct_from(
             json.loads(payload), stripe.api_key

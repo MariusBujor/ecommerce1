@@ -64,7 +64,12 @@ html, body, p, div{
     width: 70px;
 }}
 
+ .container-fluid {
+   color: aqua; 
+   }
+
 /* Footer */
 footer > div > div > ul > li{
     padding-bottom:8px;
+    /* background-color: aqua; */
 }
