@@ -1,9 +1,8 @@
 /* Over-ride bootstrap */
 
 body {
-    background-image: url('baby_listen_audio_book.jpg');
-  }
-
+    background-color: aqua;
+}
 
 @media (min-width: 1000px){
     .container{
@@ -79,3 +78,12 @@ footer > div > div > ul > li{
     padding-bottom:8px;
     /* background-color: aqua; */
 }
+
+/* .social-networks a {
+    font-size:17px;
+    color:#EEF0F4;
+}
+.social-networks a:hover {
+    font-size:20px;
+    color:aqua;
+} */
