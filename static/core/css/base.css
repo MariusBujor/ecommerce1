@@ -1,4 +1,10 @@
 /* Over-ride bootstrap */
+
+body {
+    background-image: url('baby_listen_audio_book.jpg');
+  }
+
+
 @media (min-width: 1000px){
     .container{
     max-width: 1000px;
