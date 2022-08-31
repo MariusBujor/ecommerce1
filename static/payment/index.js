@@ -33,8 +33,6 @@ let style = {
     }
     });
 
-    
-
     form.addEventListener('submit', function(ev) 
     {
       console.log('here')
@@ -44,6 +42,10 @@ let style = {
     console.log(custName)
     let custAdd = document.getElementById("custAdd").value;
     let postCode = document.getElementById("postCode").value;
+    // let email = document.getElementById("email").value;
+    let country = document.getElementById("country").value;
+    // let state = document.getElementById("state").value;
+    // let city = document.getElementById("city").value;
 
     $.ajax({
             type: "POST",
@@ -54,6 +56,9 @@ let style = {
                 action: "post",
                 full_name: custName,
                 custAdd: custAdd,
+                // city: city,
+                postCode: postCode,
+                country: country
         },
         success: function (json) {
           console.log(json.success)
@@ -62,8 +67,14 @@ let style = {
               payment_method: {
               card: card,
               billing_details: {
+                name: custName,
+                email: email,
                 address: {
-                    line1: custAdd
+                    line1: custAdd,
+                    // state:state,
+                    line2: country,
+                    line2: postCode,
+                    // line2:city,
                 },
                 name: custName
               },

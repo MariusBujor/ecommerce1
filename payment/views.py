@@ -1,3 +1,4 @@
+# import os
 import json
 
 import stripe
@@ -9,6 +10,17 @@ from django.views.generic.base import TemplateView
 
 from cart.cart import Cart
 from orders.views import payment_confirmation
+
+# from django.contrib import messages
+# from django.http import JsonResponse
+
+# from orders.models import Order
+
+# if os.path.isfile('env.py'):
+#      import env
+
+# stripe.api_key = os.environ.get
+# ('STRIPE_SECRET_KEY')
 
 
 def order_placed(request):
@@ -39,6 +51,17 @@ def CartView(request):
 
     return render(request, 'payment/home.html', {'client_secret': intent.client_secret})
 
+    # def checkout_failed(request):
+    #     if request.POST.get('action') == 'post':
+    #         order_key = request.POST.get
+    #         ('order_key')
+    #         order = Order.objects.get
+    #         (order_key=order_key)
+    #         order.delete()
+    #         msg = request.POST.get('error')
+    #         response = JsonResponse({'msg': msg})
+    #         return response
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -60,11 +83,3 @@ def stripe_webhook(request):
         print('Unhandled event type {}'.format(event.type))
 
     return HttpResponse(status=200)
-
-
-
-
-
-
-
-

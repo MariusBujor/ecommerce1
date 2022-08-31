@@ -63,7 +63,7 @@
                                 {% comment %} CATEGORIES {% endcomment %}
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="">All</a></li>
+                                    <li><a class="dropdown-item" href="{% url "store:product_all" %}">All</a></li>
 
                                     {% for c in categories %}
 
