@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
+from account.models import UserBase
+
 
 class ProductManager(models.Manager):
     def get_queryset(self):
@@ -47,3 +49,22 @@ class Product(models.Model):
           
     def __str__(self):
         return self.title
+
+# REVIEW **************
+
+class ReviewRating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserBase, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=100, blank=True)
+    review = models.TextField(max_length=100, blank=True)
+    rating = models.FloatField()
+    ip = models.CharField(max_length=20, blank=True)
+    status = models.BooleanField(default=True)
+    create_at = models.DateTimeField(auto_now_add=True)
+    udated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.subject
+
+    
+
