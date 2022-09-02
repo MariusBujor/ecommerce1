@@ -40,10 +40,9 @@
  <br>
  <div class="row">
     <div class="col-md-9">
-        <header class="section-heading">
-            <h3> Customer Review </h3>
 
 <form action="" method="POST">
+    {% url 'submit_review' product_id %}
     {% csrf_token %}
 					<h5>Write Your Review</h5>
                     <div>
@@ -70,10 +69,24 @@
                         Review:
 						<textarea name="review" rows="4" class="form-control"></textarea>
 						<br>
+                        {% if user.is_authenticated %}
+
                         <input type="submit" value="Submit Review" class="btn btn-primary">
 
+                        {% else %}
+                        <p>You must purchase this product to post a review.</p>
+                        {% endif %}
+                        
+                        {% else %}
+                        <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
+						{% endif %} 
                     </div>
-                    </div>
+                </form>
+
+            <br>
+            <header class="section-heading">
+                <h3> Customer Review </h3>
+            </header>
 
 
 

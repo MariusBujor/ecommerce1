@@ -52,6 +52,7 @@ class Product(models.Model):
 
 # REVIEW **************
 
+
 class ReviewRating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(UserBase, on_delete=models.CASCADE)
