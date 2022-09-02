@@ -1,8 +1,10 @@
 /* Over-ride bootstrap */
 
-body {
-    background-color: aqua;
-}
+/* body {
+background-image:url("baby_listen_audio_book.jpg");
+} */
+
+
 
 @media (min-width: 1000px){
     .container{
@@ -70,7 +72,7 @@ html, body, p, div{
 }}
 
  .container-fluid {
-   color: aqua; 
+   color:black; 
    }
 
 /* Footer */

@@ -9,10 +9,10 @@
 <div class="container">
     <h1 class="h2">Shopping Cart</h1>
   </div>
-    <div class="col-12">
-    <p>Manage your <b>items</b> in your basket</p>
-    </div>
-<hr/>
+    {% comment %} <div class="col-12">
+    <p> Manage your <b>items</b> in your basket</p>
+    </div> {% endcomment %}
+{% comment %} <hr/> {% endcomment %}
 <div class="container">
   <div class="row g-3">
     {% if cart|length == 0 %}
@@ -55,7 +55,8 @@
                     </a>
                     <a type="button" id="delete-button" data-index="{{product.id}}"
                     class="delete-button text-decoration-none small">Delete</a>
-
+                    <br>
+                    <span class="h6 fw-bold"> €{{ product.price }}</span>
               </div>
             </div>
           </div>

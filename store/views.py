@@ -17,8 +17,10 @@ def product_all(request):
 
 
 def product_detail(request, slug):
+
     product = get_object_or_404(Product, slug=slug, in_stock=True)
-    return render(request, 'store/products/detail.html', {'product': product})
+    reviews = ReviewRating.objects.filter(product=product).order_by('-udated_at')
+    return render(request, 'store/products/detail.html', {'product': product, 'reviews': reviews})
     
 
 def category_list(request, category_slug=None):
@@ -26,16 +28,18 @@ def category_list(request, category_slug=None):
     products = Product.objects.filter(category=category)
     return render(request, 'store/products/category.html', {'category': category, 'products': products})
 
-
-def submit_review(request, product_id):
+#......................
+def submit_review(request, pk):
     url = request.META.get('HTTP_REFERER')
+    product = Product.objects.get(pk=pk)
     if request.method == 'POST':
         try:
-            reviews = ReviewRating.objects.get(user__id=request.user.id, product__id=product_id)
+            reviews = ReviewRating.objects.get(user__id=request.user.id, pk=pk)
             form = ReviewForm(request.POST, instance=reviews)
             form.save()
             messages.success(request, 'Thank you! Your review has been updated.')
-            return redirect(url)
+            
+            return redirect('store:product_detail', slug=product.slug)
 
         except ReviewRating.DoesNotExist:
             form = ReviewForm(request.POST)
@@ -45,11 +49,11 @@ def submit_review(request, product_id):
                 data.rating = form.cleaned_data['rating']
                 data.review = form.cleaned_data['review']
                 data.ip = request.META.get('REMOTE_ADDR')
-                data.product_id = product_id
+                data.product_id = pk
                 data.user_id = request.user.id
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
-                return redirect(url)
+                return redirect('store:product_detail', slug=product.slug)
 
 
 
