@@ -1,20 +1,27 @@
 import os
 from pathlib import Path
 
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+if os.path.exists(BASE_DIR / '.env'):
+    env.read_env(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qer&x)5hc$)phbbkg6os=dw#g(tg031z9&24#5u3g_qx&d*h8x'
+SECRET_KEY = env('SECRET_KEY', default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEVELOPMENT = env('DEVELOPMENT', default=False)
+DEBUG = DEVELOPMENT
 
-ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='127.0.0.1,0.0.0.0,localhost').split(",")
 
 
 # Application definition
@@ -69,12 +76,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_URL = env('DATABASE_URL', default=False)
+if DATABASE_URL:
+    DATABASES = {
+        # read os.environ['DATABASE_URL'] and raises
+        # ImproperlyConfigured exception if not found
+        #
+        # The db() method is an alias for db_url().
+        # 'default': dj_database_url.parse(DATABASE_URL),
+        'default': env.db(),
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -140,6 +158,6 @@ LOGIN_URL = '/account/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Stripe Payment
-PUBLISHABLE_KEY = 'pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'
-SECRET_KEY = 'sk_test_51LVDiHFR4QsZUb5p0tejkzM9UmMxjVI6bV72sPriGDkzQBEtpRgnzVBrNndY2p5GKunLV3xX1aZWXBMkSbHaMPQH00jVuTaRMY'
+PUBLISHABLE_KEY = env('STRIPE_PKEY')
+SECRET_KEY = env('STRIPE_SKEY')
 STRIPE_ENDPOINT_SECRET = ''
