@@ -38,7 +38,8 @@
 
 </div>
  <br>
- <div class="row">
+
+ <div class="container quotes-container content-container">
     <div class="col-md-9">
 
 <form action="{% url 'store:submit_review' product.pk %}" method="POST">
@@ -47,7 +48,6 @@
                     <div>
 						<!-- Rating stars -->
 						<label>How do you rate this Book?</label>
-                        <br>
                         <br>
                         <div class="rate">
 							<input type="radio" name="rating" id="rating10" value="5" required /><label for="rating10" title="5"></label>
@@ -86,8 +86,9 @@
                 
             <br>
             <header class="section-heading">
-                <h3> Customer Review </h3>
+                <h4> Customer Reviews : </h4>
                 {% for review in reviews %}
+                <strong>{{user}}</strong>
                     <p>{{review.review}}</p>
                 {% endfor %}
             </header>
