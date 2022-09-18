@@ -1,6 +1,6 @@
 {% extends "../base.html" %}
 {% load static %}
-{% block title %} Category {% endblock %}
+{% block title %} Products {% endblock %}
 
 
 {% block content %}
@@ -8,7 +8,7 @@
 {% comment %} CART CONTENT SCTION {% endcomment %}
 <main>
 
-  <div class="album py-5 bg-light">
+  {% comment %} <div class="album py-5 bg-light">
     <div class="container">
 
       <div class="pb-3 h5">{{category.name|title}}</div>
@@ -34,8 +34,16 @@
 
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
 
+  <ul>
+    {% for product in products %}
+    <a href = "{% url 'update_product' product.id %}">
+<li>{{ product.description }}</li>
+    </a>
+    {% enfor %}
+  </ul>
+<a href="{% 'create_products' %}">New product</a>
 
 </main>
 
