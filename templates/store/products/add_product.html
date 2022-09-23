@@ -1,0 +1,35 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-title text-center">
+                    <!-- Page Title -->
+                    <strong>Product Management</strong>
+                </h2>
+                <hr>
+                <h5 class="page-title text-center">Add a Product</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Add Product Form -->
+                <form method="POST" action="{% url 'store:add_product' %}" class="form mb-2 add-product-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-right">
+                        <!-- Cancel and return to all Products -->
+                        <a class="btn rounded-0 cancel" href="{% url 'store:product_all' %}"><i class="fa-solid fa-chevron-left"></i>
+                            Cancel</a>
+                            <!-- Submit Product to Database -->
+                        <button class="btn rounded-0 add-product" type="submit">Add Product</button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+{% endblock %}

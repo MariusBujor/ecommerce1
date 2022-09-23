@@ -7,7 +7,9 @@
  
 {% comment %} CONTENT SCTION {% endcomment %}
 <main>
-
+  {% if is_admin %}
+    <a href="{% url "store:add_product" %}" class="btn btn-success">Add Product</a>
+  {% endif %}
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">

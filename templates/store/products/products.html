@@ -1,4 +1,4 @@
-{% extends "../base.html" %}
+{% comment %} {% extends "../base.html" %}
 {% load static %}
 {% block title %} Products {% endblock %}
 
@@ -6,7 +6,7 @@
 {% block content %}
  
 {% comment %} CART CONTENT SCTION {% endcomment %}
-<main>
+
 
   {% comment %} <div class="album py-5 bg-light">
     <div class="container">
@@ -36,7 +36,7 @@
     </div>
   </div> {% endcomment %}
 
-  <ul>
+  {% comment %} <ul>
     {% for product in products %}
     <a href = "{% url 'update_product' product.id %}">
 <li>{{ product.description }}</li>
@@ -49,4 +49,4 @@
 
 {% endblock %}
 
-{% comment %} END CARD SECTION {% endcomment %}
+END CARD SECTION {% endcomment %} 

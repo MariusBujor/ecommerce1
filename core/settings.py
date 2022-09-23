@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # 'payment',
     'orders',
     'products',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -67,6 +70,10 @@ TEMPLATES = [
                 'store.views.categories',
                 'cart.context_processors.cart',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
