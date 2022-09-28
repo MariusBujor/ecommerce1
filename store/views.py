@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Category, Product, ReviewRating
 from .forms import ReviewForm, AddProduct
+#ProductForm
 
 
 def categories(request):
@@ -37,6 +38,8 @@ def category_list(request, category_slug=None):
                   {'category': category, 'products': products})
 
 # ADD PRODUCT....
+
+
 @login_required
 def add_product(request):
     if not request.user.is_superuser:
@@ -64,8 +67,39 @@ def add_product(request):
 
     return render(request, template, context)
 
+# EDIT PRODUCT
 
-# ......................
+
+@login_required
+def edit_product(request, product_id):
+    """ Edit a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that!')
+        return redirect(reverse('store:product_all'))
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = AddProduct(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, f"Successfully edited product \
+                <strong>{ request.POST.get('name') }</strong>!")
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to edit product. Please ensure \
+                the form is valid.')
+    else:
+        form = AddProduct(instance=product)
+
+    template = 'store/products/edit_product.html'
+    context = {'form': form, 'product': product}
+    return render(request, template, context)
+
+# # ......................
+
+
 def submit_review(request, pk):
     url = request.META.get('HTTP_REFERER')
     product = Product.objects.get(pk=pk)
