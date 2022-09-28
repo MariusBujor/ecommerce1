@@ -41,6 +41,7 @@
                 <div class="fw-bold"><span>€</span>{{product.price}}</div>
                 {% if is_admin %}
     <a href="{% url 'store:edit_product' product.id %}" class="btn btn-success">Edit Book</a>
+    <a href="{% url 'store:delete_product' product.id %}" class="btn btn-danger">Delete Book</a>
   {% endif %} 
               </div>
             </div>

@@ -97,6 +97,25 @@ def edit_product(request, product_id):
     context = {'form': form, 'product': product}
     return render(request, template, context)
 
+    # DELETE PRODUCT
+
+
+@login_required
+def delete_product(request, product_id):
+    """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that!')
+        return redirect(reverse('store:product_all'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, 'Product deleted!')
+
+        return redirect(reverse('store:product_all'))
+    return render(request, 'store/products/confirm_delete.html')
+
+
 # # ......................
 
 
