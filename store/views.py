@@ -84,9 +84,8 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(
-                request, f"Successfully edited product \
-                <strong>{ request.POST.get('name') }</strong>!")
-            return redirect(reverse('product_detail', args=[product.id]))
+                request, f'{product.title}"Successfully edited product')
+            return redirect(reverse('store:product_detail', args=[product.slug]))
         else:
             messages.error(request, 'Failed to edit product. Please ensure \
                 the form is valid.')
