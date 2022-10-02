@@ -39,11 +39,13 @@
               <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted">Audio</small>
                 <div class="fw-bold"><span>€</span>{{product.price}}</div>
-                {% if is_admin %}
-    <a href="{% url 'store:edit_product' product.id %}" class="btn btn-success">Edit Book</a>
-    <a href="{% url 'store:delete_product' product.id %}" class="btn btn-danger">Delete Book</a>
-  {% endif %} 
               </div>
+              {% if is_admin %}
+                <small>
+    <a href="{% url 'store:edit_product' product.id %}" class="text-primary">Edit</a>
+    <a href="{% url 'store:delete_product' product.id %}" class="text-danger">Delete</a>
+  </small>
+  {% endif %} 
             </div>
           </div>
         </div>

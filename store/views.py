@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Category, Product, ReviewRating
 from .forms import ReviewForm, AddProduct
-#ProductForm
 
 
 def categories(request):
@@ -114,8 +113,7 @@ def delete_product(request, product_id):
         return redirect(reverse('store:product_all'))
     return render(request, 'store/products/confirm_delete.html')
 
-
-# # ......................
+     # REVIEWS
 
 
 def submit_review(request, pk):
