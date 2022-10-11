@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from django.http.response import JsonResponse, HttpResponse
-
+import stripe
 from cart.cart import Cart
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic.base import TemplateView
+
 from .models import Order, OrderItem
 
 
@@ -19,8 +24,7 @@ def add(request):
             pass
         else:
             order = Order.objects.create(
-        
-                user=request.user, full_name=request.POST.get('full_name'), address1=request.POST.get('custAdd'), order_key=order_key)
+                user=request.user, full_name=request.POST.get('full_name'), address1=request.POST.get('address1'), country=request.POST.get('country'), city=request.POST.get('city'), post_code=request.POST.get('post_code'), order_key=order_key, total=carttotal)
             order_id = order.pk
 
             for item in cart:
@@ -56,3 +60,31 @@ def user_orders(request):
     user_id = request.user.id
     orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
     return orders
+
+
+def order_placed(request):
+    cart = Cart(request)
+    cart.clear()
+    return render(request, 'payment/orderplace.html')
+
+
+class Error(TemplateView):
+    template_name = 'payment/error.html'
+
+
+@login_required
+def checkout(request):
+
+    cart = Cart(request)
+    total = str(cart.get_total_price())
+    total = total.replace('.', '')
+    total = int(total)
+
+    stripe.api_key = 'sk_test_51LVDiHFR4QsZUb5p0tejkzM9UmMxjVI6bV72sPriGDkzQBEtpRgnzVBrNndY2p5GKunLV3xX1aZWXBMkSbHaMPQH00jVuTaRMY'
+    intent = stripe.PaymentIntent.create(
+        amount=total,
+        currency='gbp',
+        metadata={'userid': request.user.id}
+    )
+
+    return render(request, 'payment/home.html', {'client_secret': intent.client_secret, 'stripe_pkey': settings.PUBLISHABLE_KEY})
