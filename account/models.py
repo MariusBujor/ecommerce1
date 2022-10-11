@@ -4,6 +4,7 @@ from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.core.mail import send_mail
+from django.conf import settings
 
 
 class CustomAccountManager(BaseUserManager):
@@ -69,7 +70,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         send_mail(
             subject,
             message,
-            'l@1.com',
+            settings.DEFAULT_FROM_EMAIL,
             [self.email],
             fail_silently=False,
         )

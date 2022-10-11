@@ -36,9 +36,8 @@ INSTALLED_APPS = [
     'store',
     'cart',
     'account',
-    # 'payment',
     'orders',
-    'products',
+    # 'products',
     'crispy_forms',
 ]
 
@@ -163,6 +162,7 @@ LOGIN_URL = '/account/login/'
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'mail@audiobebebooks.com'
 
 # Stripe Payment
 PUBLISHABLE_KEY = env('STRIPE_PKEY')
