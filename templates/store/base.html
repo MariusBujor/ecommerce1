@@ -27,7 +27,7 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
             </script> 
         
-        <link rel="stylesheet" href="{% static '/base.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
         <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}"> 
         <link rel="stylesheet" href="{% static 'review/css/review.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,11 +43,10 @@
 
         {% comment %} NAVBAR {% endcomment %}
         <header>
-            <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
+            <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <bold><i>Audio Bebe Books</i>
-                        </bold>
+                    <a class="navbar-brand font-weight-bold" href="/">
+                        <i>Audio Bebe Books</i>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -144,14 +143,15 @@
 
                         <a type="button" rol="button" href="{% url "cart:cart_summary" %}" class="btn btn-outline-secondary">
                         {% with total_qty=cart|length %}
-                        <div id="cart-qty" class="cart-qty">
+                        <div id="cart-qty" class="cart-qty font-weight-bold text-danger">
                         {% if total_qty > 0 %}
                         {{ total_qty }}
                         {% else %}
                               0
                         {% endif %}
                         </div>
-                        {% endwith %}
+                        {% endwith %}                         
+
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-cart3" viewBox="0 0 16 16">
@@ -159,6 +159,7 @@
                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                             </svg>
                         </a>
+                        
                     </div>
                 </div>
             </nav>

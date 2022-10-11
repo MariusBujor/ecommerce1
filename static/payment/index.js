@@ -1,4 +1,6 @@
-let stripe = Stripe('pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'); 
+let public_key = document.getElementById('id_stripe_public_key').value;
+let stripe = Stripe(public_key); 
+// let stripe = Stripe('pk_test_51LVDiHFR4QsZUb5pbOrLsqC1EyFjDyKyjdWCioeB9yu5uD862wCWUwdClDTx2gsH4ReQIZvh6XJniz3O11KXqybW00unW5awdd'); 
 // need publish key 
 
 let form = document.getElementById('payment-form');
@@ -38,14 +40,11 @@ let style = {
       console.log('here')
     ev.preventDefault();
 
-    let custName = document.getElementById("custName").value;
-    console.log(custName)
-    let custAdd = document.getElementById("custAdd").value;
-    let postCode = document.getElementById("postCode").value;
-    // let email = document.getElementById("email").value;
+    let full_name = document.getElementById("full_name").value;
+    let address1 = document.getElementById("address1").value;
+    let post_code = document.getElementById("post_code").value;
     let country = document.getElementById("country").value;
-    // let state = document.getElementById("state").value;
-    // let city = document.getElementById("city").value;
+    let city = document.getElementById("city").value;
 
     $.ajax({
             type: "POST",
@@ -54,11 +53,11 @@ let style = {
                 order_key: clientsecret,
                 csrfmiddlewaretoken: CSRF_TOKEN,
                 action: "post",
-                full_name: custName,
-                custAdd: custAdd,
-                // city: city,
-                postCode: postCode,
-                country: country
+                full_name: full_name,
+                address1: address1,
+                city: city,
+                country: country,
+                post_code: post_code
         },
         success: function (json) {
           console.log(json.success)
@@ -67,16 +66,15 @@ let style = {
               payment_method: {
               card: card,
               billing_details: {
-                name: custName,
-                email: email,
+                name: full_name,
+                // email: email,
                 address: {
-                    line1: custAdd,
+                    line1: address1,
                     // state:state,
                     line2: country,
-                    line2: postCode,
+                    line2: post_code,
                     // line2:city,
                 },
-                name: custName
               },
             }
           }).then(function (result) {
@@ -86,7 +84,7 @@ let style = {
             } else {
               if (result.paymentIntent.status === 'succeeded'){
                 console.log('payment processed')
-                window.location.replace("/payment/orderplaced/");
+                window.location.replace("/orders/thank-you/");
               }
             }
           });

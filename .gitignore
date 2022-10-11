@@ -12,3 +12,4 @@ cloudinary_python.txt
 __pycache__
 .venv
 stripe.*
+.backups
