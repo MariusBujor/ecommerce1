@@ -1,11 +1,13 @@
-/* Over-ride bootstrap */
-
 body {
-background-image:url("/media/images/baby_listen_audio_book.jpg");
-background-color: aquamarine;
-} 
-
-
+    background: linear-gradient(rgba(231, 247, 247, 0.668), rgba(228, 243, 245, 0.651)),
+    url("/media/images/baby_listen_audio_book.jpg") no-repeat fixed center ;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+  }
 
 @media (min-width: 1000px){
     .container{

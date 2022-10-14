@@ -1,4 +1,3 @@
-from django.http import response
 from django.http.response import HttpResponse
 from django.conf import settings
 from django.views.decorators.http import require_POST

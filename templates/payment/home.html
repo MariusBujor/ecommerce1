@@ -50,7 +50,7 @@
                                         <label for="country" class="form-label">Country</label>
                                         <select class="form-select" id="country" name="country" required>
                                             <option value="">Choose...</option>
-                                            <option>Ireland</option>
+                                            <option value="IE">Ireland</option>
                                         </select>
                                         <div class="invalid-feedback">Please select a valid country.</div>
                                 </div>
@@ -67,6 +67,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="stripe_public_key" value={{ stripe_pkey }} id="id_stripe_public_key">
+                                <input type="hidden" name="user_email" value={{ user.email }} id="user_email">
                                 </div>
                                 <hr class="my-4">
                                 <h5 class="mb-3">Payment</h5>

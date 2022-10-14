@@ -20,7 +20,8 @@ let style = {
 };
 
     let card = elements.create("card", {
-    style: style
+      hidePostalCode: true,
+      style: style
     });
     card.mount("#card-element");
 
@@ -42,9 +43,10 @@ let style = {
 
     let full_name = document.getElementById("full_name").value;
     let address1 = document.getElementById("address1").value;
-    let post_code = document.getElementById("post_code").value;
+    let billing_post_code = document.getElementById("post_code").value;
     let country = document.getElementById("country").value;
     let city = document.getElementById("city").value;
+    let email = document.getElementById("user_email").value;
 
     $.ajax({
             type: "POST",
@@ -57,7 +59,7 @@ let style = {
                 address1: address1,
                 city: city,
                 country: country,
-                post_code: post_code
+                post_code: billing_post_code
         },
         success: function (json) {
           console.log(json.success)
@@ -67,13 +69,12 @@ let style = {
               card: card,
               billing_details: {
                 name: full_name,
-                // email: email,
+                email: email,
                 address: {
                     line1: address1,
-                    // state:state,
-                    line2: country,
-                    line2: post_code,
-                    // line2:city,
+                    city: city,
+                    country: country,
+                    postal_code: billing_post_code,
                 },
               },
             }
@@ -84,7 +85,7 @@ let style = {
             } else {
               if (result.paymentIntent.status === 'succeeded'){
                 console.log('payment processed')
-                window.location.replace("/orders/thank-you/");
+                // window.location.replace("/orders/thank-you/");
               }
             }
           });
