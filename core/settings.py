@@ -11,9 +11,6 @@ if os.path.exists(BASE_DIR / '.env'):
     env.read_env(BASE_DIR / '.env')
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY', default='')
 
@@ -37,7 +34,6 @@ INSTALLED_APPS = [
     'cart',
     'account',
     'orders',
-    # 'products',
     'crispy_forms',
 ]
 
@@ -89,10 +85,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASE_URL = env('DATABASE_URL', default=False)
 if DATABASE_URL:
     DATABASES = {
-        # read os.environ['DATABASE_URL'] and raises
-        # ImproperlyConfigured exception if not found
-        #
-        # The db() method is an alias for db_url().
         'default': env.db(),
     }
 else:

@@ -13,7 +13,6 @@ from .models import Order, OrderItem
 def add(request):
     cart = Cart(request)
     if request.POST.get('action') == 'post':
-        # print('MADE IT HERE')
 
         order_key = request.POST.get('order_key')
         user_id = request.user.id
