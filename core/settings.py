@@ -84,20 +84,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if env('ENVIRON') == 'DEVELOPMENT':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
+DATABASE_URL = env('DATABASE_URL', default=False)
+if DATABASE_URL:
     DATABASES = {
         # read os.environ['DATABASE_URL'] and raises
         # ImproperlyConfigured exception if not found
         #
         # The db() method is an alias for db_url().
         'default': env.db(),
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 
 
@@ -165,6 +166,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'mail@audiobebebooks.com'
 
 # Stripe Payment
-PUBLISHABLE_KEY = env('STRIPE_PKEY')
-SECRET_KEY = env('STRIPE_SKEY')
-STRIPE_ENDPOINT_SECRET = env('STRIPE_ENDPOINT_SECRET')
+PUBLISHABLE_KEY = env('STRIPE_PKEY', default='')
+SECRET_KEY = env('STRIPE_SKEY', default='')
+STRIPE_ENDPOINT_SECRET = env('STRIPE_ENDPOINT_SECRET', default='')
