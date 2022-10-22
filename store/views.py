@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Category, Product, ReviewRating
 from .forms import ReviewForm, AddProduct
-
+from cloudinary import uploader
 
 def categories(request):
     return {
@@ -36,9 +36,8 @@ def category_list(request, category_slug=None):
     return render(request, 'store/products/category.html',
                   {'category': category, 'products': products})
 
+
 # ADD PRODUCT....
-
-
 @login_required
 def add_product(request):
     if not request.user.is_superuser:
@@ -66,9 +65,8 @@ def add_product(request):
 
     return render(request, template, context)
 
+
 # EDIT PRODUCT
-
-
 @login_required
 def edit_product(request, product_id):
     """ Edit a product to the store """
@@ -95,9 +93,8 @@ def edit_product(request, product_id):
     context = {'form': form, 'product': product}
     return render(request, template, context)
 
-    # DELETE PRODUCT
 
-
+# DELETE PRODUCT
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -107,6 +104,7 @@ def delete_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
+        uploader.destroy(product.image.public_id)
         product.delete()
         messages.success(request, 'Product deleted!')
 
