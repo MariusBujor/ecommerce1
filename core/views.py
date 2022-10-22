@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.conf import settings
+from django.shortcuts import render, redirect, reverse
 
 
 def page_not_found_view(request, exception):
-    return render(request, '404page/404.html', status=404)
+    return render(request, 'errors/404.html')
