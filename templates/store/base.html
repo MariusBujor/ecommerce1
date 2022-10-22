@@ -4,7 +4,7 @@
 
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>{% block title %}Audio Bebe Books{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=" Audio books and stories for kids and babies">
@@ -81,7 +81,7 @@
 
                     {% if user.is_authenticated %}
                     <a type="button" role="button" href="{% url "account:logout" %}"
-                        class="btn btn-outline-secondary border-0 basket-btn"></a>
+                        class="btn btn-outline-secondary border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-door-closed" viewBox="0 0 16 16">
@@ -93,7 +93,8 @@
                         <span class="fs15 fw500">Logout</span>
                     </a>
                     {% else %}
-                    <a type="button" role="button" href="{% url "account:login" %}"class="btn btn-outline-secondary border-0 basket-btn"></a>
+                    <a type="button" role="button" href="{% url "account:login" %}"
+                    class="btn btn-outline-secondary border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-door-closed" viewBox="0 0 16 16">
@@ -108,7 +109,8 @@
 
                     {% comment %} Account link {% endcomment %}
 
-                    <a type="button" role="button" href="{% url "account:dashboard" %}"class="btn btn-outline-secondary border-0 basket-btn"></a><div>
+                    <a type="button" role="button" href="{% url "account:dashboard" %}"
+                    class="btn btn-outline-secondary border-0 basket-btn"><div>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
@@ -125,7 +127,8 @@
                     </a>
                     {% comment %} CART {% endcomment %}
 
-                    <a type="button" checked ="button" href="{% url "cart:cart_summary" %}"class="btn btn-outline-secondary"></a>
+                    <a type="button" role ="button" href="{% url "cart:cart_summary" %}"
+                    class="btn btn-outline-secondary">
                         {% with total_qty=cart|length %}
                         <div id="cart-qty" class="cart-qty font-weight-bold text-danger">
                             {% if total_qty > 0 %}

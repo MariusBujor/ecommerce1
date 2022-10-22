@@ -5,6 +5,7 @@ from .models import Category, Product, ReviewRating
 from .forms import ReviewForm, AddProduct
 from cloudinary import uploader
 
+
 def categories(request):
     return {
         'categories': Category.objects.all()

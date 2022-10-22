@@ -1,4 +1,4 @@
-{% extends "store/base.html" %}
+{% extends "../store/base.html" %}
 {% load static %}
 {% block title %}404{% endblock %}
 
@@ -11,7 +11,7 @@
             <a class="btn btn-info mx-5 badge px-sm-4 py-2 d-lg-none font-weight-light"
             href="">Audio bebe books</a>
             <h4 class="my-3 cta-txt text-uppercase">Oops! Page not found</h4>
-            <a class="btn btn-info mt-2 mx-5 d-none d-lg-inline-block" href="{% url'sore'%}" role ="button">Go to our Home page</a>
+            <a class="btn btn-info mt-2 mx-5 d-none d-lg-inline-block" href="{% url "store:products_all" %}" role ="button">Go to our Home page</a>
         </div>
         <div class="col-lg-6">
             <img src=""class="img-fluid d-none d-md-block" alt=""/>
