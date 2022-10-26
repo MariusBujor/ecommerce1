@@ -1,4 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 # Table of Contents
 - [Table of Contents](#table-of-contents)
@@ -18,10 +17,10 @@
       - [Existing Features (Photo Links)](#existing-features-photo-links)
       - [Navbar](#navbar)
       - [Homepage](#homepage)
-      - [Login](#login)
-      - [Logout](#logout)
+      - [Footer](#footer)
+      - [Pay form Page](#pay-form-page)
       - [Register as a User](#register-as-a-user)
-      - [Site Admin Panel](#site-admin-panel)
+      - [Product Page](#product-page)
     - [Future Features](#future-features)
       - [Model of payment based on subscriptions](#model-of-payment-based-on-subscriptions)
       - [Chat window](#chat-window)
@@ -29,14 +28,15 @@
 - [SEO ?????????????????????????????](#seo-)
 - [Social Media](#social-media)
 - [Email Marketing ????????????](#email-marketing-)
-    - [Testing ??????????????????](#testing-)
+    - [Testing](#testing)
+    - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
+      - [Functionality Testing](#functionality-testing)
     - [Deployment](#deployment)
       - [Deploy to Heroku](#deploy-to-heroku)
     - [Credits](#credits)
       - [Media](#media)
       - [Code](#code)
-      - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
-      - [Footer](#footer)
+      - [Footer](#footer-1)
     - [Structure](#structure)
         - [Programming Languages](#programming-languages)
       - [Technology Used ????????????????](#technology-used-)
@@ -132,7 +132,7 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
 
 ## Database Schema
 
-  ![](media/images/data_schema/schema.PNG)  ?????????????????????????
+  ![](media/images/data_schema/schema.PNG)
 
   ### Features
 
@@ -140,26 +140,35 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
    - In my last project, I struggled greatly with feature creep, so I only implemented the features I decided on during the planning stages
    - There were times when I was tempted to add a new cool feature, such as a customer wishlist, customer reviews, or user book club groups. My original plan, however, is much stronger as a result of sticking to it.
 
-   - Photo ????????????????????
-
-
-
-
+   ![](media/images/data_schema/features.PNG)
    #### Existing Features (Photo Links)
 
    #### Navbar
+
+   ![](media/images/screenshoots/navbar_logedin.PNG)
+   ![](media/images/screenshoots/navbar_logout.PNG)
   
    #### Homepage
 
-  
+   ![](media/images/screenshoots/homepage_user.PNG)
+   ![](media/images/screenshoots/home_admin.PNG)
 
-   #### Login
+   #### Footer
+   ![](media/images/screenshoots/footer.PNG)
 
-   #### Logout
+
+   #### Pay form Page
+   ![](media/images/screenshoots/pay_form_page.PNG)
+
 
    #### Register as a User
+   ![](media/images/screenshoots/register.PNG)
 
-   #### Site Admin Panel
+
+   #### Product Page
+   ![](media/images/screenshoots/product_page.PNG)
+
+
 
    ### Future Features 
 
@@ -175,22 +184,59 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
   
    - My original plans and user stories did not include this feature, so I decided not to include it in the project.
 
-# SEO ?????????????????????????????
+# SEO ????????????????????????????? 
+video?
+
 
 # Social Media
   - As part of the site's promotion, it has a Facebook business page
-
-   photos ??????????????????????? update facebook page about..
+    ![](media/images/facebook/facebook_page.PNG)
 
 # Email Marketing ????????????
   - In the website's footer, users can sign up for an email newsletter. All admin emails include a convenient unsubscribe link. When the admin creates a new letter, a post_save Django signal sends it to everyone subscribed.
 
-  ### Testing ??????????????????
+  ### Testing
+
+  The project was manually tested by fallowing the steps :
+  - Code was run trough the validator resulting no issues
+  - Deploying the project from gitpod workspace trough Heroku
+  - The site was also tested on I-Pad , I-Phone and Laptop.
+  
+  ### Testing User Stories from User Experience (UX) Section
+
+  - All user stories in the list above has been tested and confirmed after implementation.
+  
+  #### Functionality Testing
+
+* Lighthouse
+
+    ![](media/images/testing/lighthouse.PNG) 
+
+* HTML
+
+    ![](media/images/testing/html.PNG) 
+
+* CSS
+
+    ![](media/images/testing/css_validator.PNG) 
+
+
+* PEP8 - No bugs found
+  <details>
+    <summary>Click to see the Screenshots</summary>
+
+  ![](media/images/testing/add_product_in_basket.PNG)
+
+  ![](media/images/testing/homepage_add_update_delete_product.PNG)
+
+  ![](media/images/testing/pep8deleteproduct.PNG)
+
+  </details>
 
 
   ### Deployment
 
-    Local Deployment
+  Local Deployment
 
    I used Gitpod to write the code for my project, with regular commits to document the creation process. For this project, I deployed it to Heroku and used "git push Heroku master" to ensure that my GitHub pushes were also pushed to Heroku.
 
@@ -244,9 +290,6 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
    - [Codegrepper](https://www.codegrepper.com/code-examples/python/jinja+get+current+url+django) as a general resource.
 
    - [W3School](https://www.w3schools.com/) as a general resource.
-
-  #### Testing User Stories from User Experience (UX) Section
-
 
    #### Footer
 
@@ -303,16 +346,16 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
   - As usual the Slack crowd can't be thanked enough. Especially I like to thank to Daniel_C_5p and Paul Istratoaie  for a lot of tips and encouragement all through this project.
 
 
-List Schema ==
-Database Schema
-Cloudinary
-page 404
+List Schema == -
+Database Schema -
+Cloudinary -
+page 404 -
 Testing ==?
-Facebook ok?==
-mailchip ok..?
-messages ????
-robots.txt
-sitemap.xml file. 
+Facebook ok?== -
+mailchip ok..? -
+messages ???? -
+robots.txt -
+sitemap.xml file.  -
 
 text in  orders views.py and stripe api key / base.css /  account-registration - activation invalid message / base html top links / 
 

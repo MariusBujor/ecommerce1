@@ -40,8 +40,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        body {
-            background: linear-gradient(rgba(231, 247, 247, 0.668), rgba(228, 243, 245, 0.651)),
+        body{
+            background:linear-gradient(rgba(231, 247, 247, 0.668), rgba(228, 243, 245, 0.651)),
             url("{% static '/images/baby_listen_audio_book.jpg' %}") no-repeat fixed center;
         }
     </style>
@@ -133,7 +133,7 @@
                     </a>
                     {% comment %} CART {% endcomment %}
 
-                    <a type="button" role ="button" href="{% url "cart:cart_summary" %}"
+                    <a type="button" role="button" href="{% url "cart:cart_summary" %}"
                     class="btn btn-outline-secondary">
                         {% with total_qty=cart|length %}
                         <div id="cart-qty" class="cart-qty font-weight-bold text-danger">
