@@ -19,6 +19,8 @@ SECRET_KEY = env('SECRET_KEY', default='')
 DEVELOPMENT = env('DEVELOPMENT', default=False)
 DEBUG = DEVELOPMENT
 
+ENVIRONMENT = env('ENVIRON', default='DEVELOPMENT')
+
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='127.0.0.1,0.0.0.0,localhost').split(",")
 
 
@@ -85,8 +87,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASE_URL = env('DATABASE_URL', default=False)
-if DATABASE_URL:
+# DATABASE_URL = env('DATABASE_URL', default=False)
+if ENVIRONMENT == 'PRODUCTION':
     DATABASES = {
         'default': env.db(),
     }
