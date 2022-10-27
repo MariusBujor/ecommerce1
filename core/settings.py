@@ -21,8 +21,7 @@ DEBUG = DEVELOPMENT
 
 ENVIRONMENT = env('ENVIRON', default='DEVELOPMENT')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='127.0.0.1,0.0.0.0,localhost').split(",")
-
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(",")
 
 # Application definition
 
@@ -100,7 +99,6 @@ else:
         }
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -133,6 +131,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+APPEND_SLASH = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -145,7 +144,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if ENVIRONMENT == 'PRODUCTION':
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -161,7 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user model
 AUTH_USER_MODEL = 'account.UserBase'
-LOGIN_REDIRECT_URL = '/account/dashboard'
+LOGIN_REDIRECT_URL = '/account/dashboard/'
 LOGIN_URL = '/account/login/'
 
 # Email Settings
