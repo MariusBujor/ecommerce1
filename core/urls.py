@@ -18,14 +18,14 @@ urlpatterns = [
     path('account/', include('account.urls', namespace='account')),
     path('orders/', include('orders.urls')),
     path('', include('store.urls', namespace='store')),
-    re_path(r'^.*$', TemplateView.as_view(template_name="errors/404.html",
-                                          content_type="text/html"),
-            ),
     path('robots.txt',
          TemplateView.as_view(template_name="robots.txt",
                               content_type="text/plain"),
          ),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    re_path(r'^.*$', TemplateView.as_view(template_name="errors/404.html",
+                                          content_type="text/html"),
+            )
 ]
 
 if settings.DEVELOPMENT:
