@@ -1,9 +1,9 @@
 core.Microsoft*
 core.mongo*
 core.python*
+*.sqlite3
 .env
 __pycache__/
-*.py[cod]
 node_modules/
 .github/
 cloudinary_python.txt
@@ -13,4 +13,4 @@ __pycache__
 stripe.*
 .backups
 staticfiles/*
-*.sqlite3
+*.py[cod]
