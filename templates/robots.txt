@@ -1,1 +1,9 @@
 User-Agent: *
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /account/
+Disallow: /orders/
+Disallow: /add/
+Disallow: /edit/
+Disallow: /delete/
+Sitemap: https://audio-bebe-books.herokuapp.com/sitemap.xml
