@@ -2,7 +2,6 @@ let public_key = document.getElementById('id_stripe_public_key').value;
 let stripe = Stripe(public_key); 
 
 let form = document.getElementById('payment-form');
-console.log(form)
 
 let elem = document.getElementById('submit');
 clientsecret = elem.getAttribute('data-secret');
@@ -36,7 +35,6 @@ let style = {
 
     form.addEventListener('submit', function(ev) 
     {
-      console.log('here')
     ev.preventDefault();
 
     let full_name = document.getElementById("full_name").value;
@@ -60,7 +58,6 @@ let style = {
                 post_code: billing_post_code
         },
         success: function (json) {
-          console.log(json.success)
 
           stripe.confirmCardPayment(clientsecret, {
               payment_method: {
@@ -78,12 +75,10 @@ let style = {
             }
           }).then(function (result) {
             if (result.error) {
-              console.log('payment error')
               console.log(result.error.message);
             } else {
               if (result.paymentIntent.status === 'succeeded'){
-                console.log('payment processed')
-                // window.location.replace("/orders/thank-you/");
+                window.location.replace("/orders/thank-you/");
               }
             }
           });
