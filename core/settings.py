@@ -166,8 +166,17 @@ LOGIN_REDIRECT_URL = '/account/dashboard/'
 LOGIN_URL = '/account/login/'
 
 # Email Settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'mail@audiobebebooks.com'
+if ENVIRONMENT == 'Production':
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASS')
+    EMAIL_PORT = int(env('EMAIL_PORT', default=587))
+    EMAIL_USE_TLS = bool(env('EMAIL_USE_TLS', default=True))
+    DEFAULT_FROM_EMAIL = env('EMAIL_FROM')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'mail@audiobebebooks.com'
 
 # Stripe Payment
 PUBLISHABLE_KEY = env('STRIPE_PKEY', default='')
