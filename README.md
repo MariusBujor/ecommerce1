@@ -2,50 +2,53 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [UX ](#ux-)
+  - [UX](#ux)
     - [User Stories](#user-stories)
     - [Strategy](#strategy)
     - [Scope](#scope)
-  - [Typography ](#typography-)
-  - [Color ](#color-)
-  - [Skeleton](#skeleton)
+  - [Typography](#typography)
+  - [Color](#color)
+  - [Structure](#structure)
+    - [Skeleton](#skeleton)
     - [Wireframes](#wireframes)
     - [Mobile](#mobile)
     - [Desktop](#desktop)
   - [Database Schema](#database-schema)
-    - [Features](#features)
-      - [Existing Features (Photo Links)](#existing-features-photo-links)
+  - [Features](#features)
+    - [Existing Features (Photo Links)](#existing-features-photo-links)
       - [Navbar](#navbar)
       - [Homepage](#homepage)
       - [Footer](#footer)
       - [Pay form Page](#pay-form-page)
       - [Register as a User](#register-as-a-user)
       - [Product Page](#product-page)
+      - [404 Page](#404-page)
     - [Future Features](#future-features)
       - [Model of payment based on subscriptions](#model-of-payment-based-on-subscriptions)
       - [Chat window](#chat-window)
       - [Wishlist](#wishlist)
-- [SEO ?????????????????????????????](#seo-)
-- [Social Media](#social-media)
-- [Email Marketing ????????????](#email-marketing-)
-    - [Testing](#testing)
+  - [SEO](#seo)
+  - [Social Media](#social-media)
+  - [Email Marketing](#email-marketing)
+  - [Testing](#testing)
     - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
+      - [robots.txt](#robotstxt)
+      - [sitemap.xml](#sitemapxml)
       - [Functionality Testing](#functionality-testing)
-    - [Deployment](#deployment)
+  - [Deployment](#deployment)
       - [Deploy to Heroku](#deploy-to-heroku)
-    - [Credits](#credits)
+  - [Credits](#credits)
       - [Media](#media)
       - [Code](#code)
-      - [Footer](#footer-1)
-    - [Structure](#structure)
-        - [Programming Languages](#programming-languages)
-      - [Technology Used ????????????????](#technology-used-)
+      - [Programming Languages](#programming-languages)
+      - [Payments](#payments)
       - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
       - [Acknowledgements](#acknowledgements)
 
-**[LIVE DEMO - Click Here](https://audio-bebe-books.herokuapp.com/)**
+**[LIVE DEMO - Click Here
+![](media/images/screenshoots/preview_ipad.png)
+](https://audio-bebe-books.herokuapp.com/)**
 
-![]()
 
 ## Introduction
 
@@ -55,13 +58,13 @@ Due to the fact that it sells digital products, customers have instant access to
 Audio Bebe Books is primarily intended for kids who like to listen to stories:
 
 
-## UX <p id="user-stories"></p>
+## UX
 
   ### User Stories
 
   User story format/steps has been taken from Boutique Ado and imported from Repository ecommerce2 (a test for my project) and more issues have been resolved manually during the project.
   
-   - <a href=https://github.com/users/MariusBujor/projects/5/views/1 target='_blank'>Account Creation</a>
+  - <a href=https://github.com/users/MariusBujor/projects/5/views/1 target='_blank'>Account Creation</a>
 
 - VIEWING AND NAVIGATION
   - <a href= https://github.com/MariusBujor/ecommerce2/issues/10 target='_blank'>As a shopper, I want to view items in my bag to be purchased so I can identify the total cost of my purchase and all items I will receive.</a>
@@ -99,19 +102,19 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
    ### Scope
    - The website provides for the user an easy navigation , photos,content,filter and prices with regards the books.
 
-## Typography <p id="Typography"></p>
+## Typography
 
   - For typography has been used <a href=https://fonts.google.com/specimen/Roboto
  target='_blank'> Google Fonts Roboto</a>
 
-## Color <p id="color"></p>
+## Color
 
   - Colors have been imported from  <a href= https://color-hex.org/ target='_blank'> Color Hex</a>
 
    ![](media/images/colors/colors.PNG)
 
-## Skeleton
-
+ ## Structure
+ ### Skeleton
 
    ### Wireframes 
   - Wireframes created with Balsamiq
@@ -134,14 +137,13 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
 
   ![](media/images/data_schema/schema.PNG)
 
-  ### Features
-
+## Features
 
    - In my last project, I struggled greatly with feature creep, so I only implemented the features I decided on during the planning stages
    - There were times when I was tempted to add a new cool feature, such as a customer wishlist, customer reviews, or user book club groups. My original plan, however, is much stronger as a result of sticking to it.
 
    ![](media/images/data_schema/features.PNG)
-   #### Existing Features (Photo Links)
+   ### Existing Features (Photo Links)
 
    #### Navbar
 
@@ -168,6 +170,8 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
    #### Product Page
    ![](media/images/screenshoots/product_page.PNG)
 
+   #### 404 Page
+   ![](media/images/testing/404.PNG)
 
 
    ### Future Features 
@@ -184,18 +188,22 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
   
    - My original plans and user stories did not include this feature, so I decided not to include it in the project.
 
-# SEO ????????????????????????????? 
-video?
+  ## SEO
 
+   My keyword research began by consulting Google's "what people are searching for" section and [Wordtracker.com](https://www.wordtracker.com/) to narrow down a list of long and short tail keywords.
 
-# Social Media
+   ![](media/images/screenshoots/seo.PNG)
+
+  ## Social Media
   - As part of the site's promotion, it has a Facebook business page
     ![](media/images/facebook/facebook_page.PNG)
 
-# Email Marketing ????????????
-  - In the website's footer, users can sign up for an email newsletter. All admin emails include a convenient unsubscribe link. When the admin creates a new letter, a post_save Django signal sends it to everyone subscribed.
+  ## Email Marketing 
+  - [Mailchimp](https://mailchimp.com/) was used for this section 
+  - In the website's footer, users can sign up for an email newsletter.
+  - All admin emails include a convenient unsubscribe link.
 
-  ### Testing
+  ## Testing
 
   The project was manually tested by fallowing the steps :
   - Code was run trough the validator resulting no issues
@@ -205,23 +213,28 @@ video?
   ### Testing User Stories from User Experience (UX) Section
 
   - All user stories in the list above has been tested and confirmed after implementation.
+   
+  #### robots.txt  
+   -  is generateted automaticaly  [Click Here](https://audio-bebe-books.herokuapp.com/robots.txt)
+  #### sitemap.xml  
+   -  is generateted automaticaly  [Click Here](https://audio-bebe-books.herokuapp.com/sitemap.xml)
   
   #### Functionality Testing
 
-* Lighthouse
+  * Lighthouse
 
     ![](media/images/testing/lighthouse.PNG) 
 
-* HTML
+  * HTML
 
     ![](media/images/testing/html.PNG) 
 
-* CSS
+  * CSS
 
     ![](media/images/testing/css_validator.PNG) 
 
 
-* PEP8 - No bugs found
+  * PEP8 - No bugs found
   <details>
     <summary>Click to see the Screenshots</summary>
 
@@ -234,11 +247,18 @@ video?
   </details>
 
 
-  ### Deployment
+  ## Deployment
 
   Local Deployment
 
    I used Gitpod to write the code for my project, with regular commits to document the creation process. For this project, I deployed it to Heroku and used "git push Heroku master" to ensure that my GitHub pushes were also pushed to Heroku.
+
+      Create an .env that contains these variables :
+      SECRET_KEY=*******
+      DEVELOPMENT=True
+      ENVIRON=DEVELOPMENT
+      STRIPE_PKEY=*******
+      STRIPE_SKEY=*******
 
   #### Deploy to Heroku
 
@@ -252,34 +272,29 @@ video?
     Now the new app's dashboard is opened. Click on the resources tab.
     Add the Heroku Postgres Add-on.
     Go to the settings tab and reveal the Config Vars and add :
+    ALLOWED_HOSTS
     CLOUDINARY_URL
     DATABASE_URL
+    DEVELOPMENT
+    ENVIRON
     SECRET_KEY
+    STRIPE_PKEY
+    STRIPE_SKEY
+    STRIPE_ENDPOINT_SECRET
     Click on "Deploy" and select your deploy method and repository.
     Click "Connect" on selected repository
     Click "Deploy Branch" in the manual deploy section. -> Heroku will now deploy the App.
     Development Environment
 
-    Create an env.py that contains these variables :
-      - os.environ["DATABASE_URL"] = "postgres://....."
-      - os.environ["SECRET_KEY"] = ".."
-      - os.environ["CLOUDINARY_CLOUD_NAME"] = ".."
-      - os.environ["CLOUDINARY_API_KEY"] = ".."
-      - os.environ["CLOUDINARY_API_SECRET"] = ".."
-      - os.environ["CLOUDINARY_URL"] = ".."
-      - os.environ["DEVELOPMENT"] = "True"
-    Create requirements.txt by typing in terminal :
-    pip3 freeze --local > requirements.txt
+  ## Credits
 
- ### Credits
-
-   #### Media
+  #### Media
 
    - All images for the book  have been taken from  http://www.amazon.com
    - Cover image for the site has been taken from  https://www.centracare.com
    - All description content for the books has been taken from https://books.google.ie/books/about/
 
-   #### Code 
+  #### Code 
 
    - Through this project, I relied heavily on tutorials and Bootstrap examples.
 
@@ -291,23 +306,19 @@ video?
 
    - [W3School](https://www.w3schools.com/) as a general resource.
 
-   #### Footer
-
- ### Structure
-
-  ##### Programming Languages 
+  #### Programming Languages 
 
   - Python
   - HTML
   - CSS
+  - JavaScript
   
-  #### Technology Used ????????????????
 
-  Payments
+  #### Payments
 
-- Payment functionality was implemented using the Stripe system. The system was set up using the Boutique Ado project and Stripe documentation.
+  - Payment functionality was implemented using the Stripe system. The system was set up using the Boutique Ado project and Stripe documentation.
 
-- For testing the payment system, the following dummy details can be used: Card number: 4242 4242 4242 4242 Expiry: 04/24 CVC: 242
+  - For testing the payment system, the following dummy details can be used: Card number: 4242 4242 4242 4242 Expiry: 04/24 CVC: 242
 
   - No auth: 4242424242424242
 
@@ -328,35 +339,19 @@ video?
    to deploy this project so the backend language can be utilised/tested.
   - [Django](https://www.djangoproject.com/) - This framework was used to build the foundations of this project
   - [Gunicorn](https://gunicorn.org/) - Gunicorn is a pure-Python HTTP server for WSGI applications.
-  - [DjDatabaseURL](https://pypi.org/project/dj-database-url/) - This allows you to utilize the 12factor inspired DATABASE_URL 
-   environment variable to configure your Django application.
   - [Cloudinary](https://cloudinary.com/) - Used to store images online for the recipe posts.
-  - [Summernote](https://summernote.org/) - Used to add a text area field to the admin setup to enable 
    a list of ingredients and method steps.
   - [GoogleFonts](https://fonts.google.com/) - Provide fonts for the website.
   - [FontAwesome](https://fontawesome.com/) - Was used for icons.
   - [AmIResponsive](https://ui.dev/amiresponsive) - To check if the site is responsive on different screen sizes.
   - [W3CMarkupValidator](https://jigsaw.w3.org/) - Was used to validate HTML.
-  - [Coolors](https://color-hex.org/) - To make color palette
+  - [Colors](https://color-hex.org/) - To make color palette
 
  
- #### Acknowledgements
+  #### Acknowledgements
 
   - First of all ,my mentor Martina Terlevic that deserves a big thank you for suport and guidance.
-  - As usual the Slack crowd can't be thanked enough. Especially I like to thank to Daniel_C_5p and Paul Istratoaie  for a lot of tips and encouragement all through this project.
+  - As usual the Slack crowd can't be thanked enough. Especially I like to thank to Daniel_C_5p and Paul Istratoaie for a lot of tips and encouragement all through this project.
 
-
-List Schema == -
-Database Schema -
-Cloudinary -
-page 404 -
-Testing ==?
-Facebook ok?== -
-mailchip ok..? -
-messages ???? -
-robots.txt -
-sitemap.xml file.  -
-
-text in  orders views.py and stripe api key / base.css /  account-registration - activation invalid message / base html top links / 
 
    
