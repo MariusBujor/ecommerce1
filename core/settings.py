@@ -146,8 +146,6 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-# if ENVIRONMENT == 'PRODUCTION':
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -166,7 +164,7 @@ LOGIN_REDIRECT_URL = '/account/dashboard/'
 LOGIN_URL = '/account/login/'
 
 # Email Settings
-if ENVIRONMENT == 'Production':
+if ENVIRONMENT == 'PRODUCTION':
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = env('EMAIL_HOST')
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
