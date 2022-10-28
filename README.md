@@ -272,15 +272,20 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
     Now the new app's dashboard is opened. Click on the resources tab.
     Add the Heroku Postgres Add-on.
     Go to the settings tab and reveal the Config Vars and add :
-    ALLOWED_HOSTS
-    CLOUDINARY_URL
-    DATABASE_URL
-    DEVELOPMENT
-    ENVIRON
-    SECRET_KEY
-    STRIPE_PKEY
-    STRIPE_SKEY
-    STRIPE_ENDPOINT_SECRET
+    ALLOWED_HOSTS=https://heroku-url
+    CLOUDINARY_URL=cloudinary://cloudinary-url
+    DATABASE_URL=postgres://database_url
+    DEVELOPMENT=False (DEBUG)
+    ENVIRON=PRODUCTION
+    EMAIL_HOST=smtp.server
+    EMAIL_PORT=587
+    EMAIL_HOST_USER=****
+    EMAIL_HOST_PASS=****
+    EMAIL_FROM=email@from
+    SECRET_KEY=****
+    STRIPE_PKEY=****
+    STRIPE_SKEY=****
+    STRIPE_ENDPOINT_SECRET=****
     Click on "Deploy" and select your deploy method and repository.
     Click "Connect" on selected repository
     Click "Deploy Branch" in the manual deploy section. -> Heroku will now deploy the App.

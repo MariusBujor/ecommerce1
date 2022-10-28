@@ -1,6 +1,6 @@
 Hello {{ order.full_name }}!
 
-This is a confirmation of your order at DjanGommerce. Your order information is below:
+This is a confirmation of your order at Audio Bebe Books. Your order information is below:
 
 Order Number: {{ order.id }}
 Order Date: {{ order.created }}
