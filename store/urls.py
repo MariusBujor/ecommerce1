@@ -7,9 +7,11 @@ app_name = 'store'
 urlpatterns = [
     path('', views.product_all, name='product_all'),
     path('item/<slug:slug>/', views.product_detail, name='product_detail'),
-    path('search/<slug:category_slug>/', views.category_list, name='category_list'),
+    path('search/<slug:category_slug>/', views.category_list,
+         name='category_list'),
     path('submit_review/<int:pk>/', views.submit_review, name='submit_review'),
     path('add/', views.add_product, name='add_product'),
     path('edit/<int:product_id>/', views.edit_product, name='edit_product'),
-    path('delete/<int:product_id>/', views.delete_product, name='delete_product'),
+    path('delete/<int:product_id>/', views.delete_product,
+         name='delete_product'),
 ]

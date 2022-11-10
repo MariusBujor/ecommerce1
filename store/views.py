@@ -17,7 +17,8 @@ def product_all(request):
 
     context = {
         'products': products,
-        'is_admin': request.user.is_authenticated and request.user.is_superuser,
+        'is_admin': request.user.is_authenticated and
+        request.user.is_superuser,
     }
     return render(request, 'store/main.html', context)
 
@@ -53,7 +54,8 @@ def add_product(request):
             product.created_by = request.user
             product.save()
             messages.success(request, f'{product.title} Successfully Added!')
-            return redirect(reverse('store:product_detail', args=[product.slug]))
+            return redirect(reverse('store:product_detail',
+                                    args=[product.slug]))
         else:
             messages.error(request, 'Opps! Please ensure the form is valid.')
     else:
@@ -83,7 +85,8 @@ def edit_product(request, product_id):
             form.save()
             messages.success(
                 request, f'{product.title}"Successfully edited product')
-            return redirect(reverse('store:product_detail', args=[product.slug]))
+            return redirect(reverse('store:product_detail',
+                                    args=[product.slug]))
         else:
             messages.error(request, 'Failed to edit product. Please ensure \
                 the form is valid.')
@@ -112,7 +115,7 @@ def delete_product(request, product_id):
         return redirect(reverse('store:product_all'))
     return render(request, 'store/products/confirm_delete.html')
 
-     # REVIEWS
+    # REVIEWS
 
 
 def submit_review(request, pk):

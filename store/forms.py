@@ -9,7 +9,6 @@ class ReviewForm(forms.ModelForm):
 
 
 class AddProduct(forms.ModelForm):
-    
     class Meta:
         model = Product
         exclude = ('created_by',)

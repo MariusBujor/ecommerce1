@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ReviewRating',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField
+                 (auto_created=True, primary_key=True,
+                  serialize=False, verbose_name='ID')),
                 ('subject', models.CharField(blank=True, max_length=100)),
                 ('review', models.TextField(blank=True, max_length=100)),
                 ('rating', models.FloatField()),
@@ -24,8 +26,12 @@ class Migration(migrations.Migration):
                 ('status', models.BooleanField(default=True)),
                 ('create_at', models.DateTimeField(auto_now_add=True)),
                 ('udated_at', models.DateTimeField(auto_now=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.product')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('product', models.ForeignKey
+                 (on_delete=django.db.models.deletion.CASCADE,
+                  to='store.product')),
+                ('user', models.ForeignKey
+                 (on_delete=django.db.models.deletion.CASCADE,
+                  to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

@@ -7,7 +7,8 @@ from django.contrib.auth.forms import (
 class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'login-username'}))
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Username',
+               'id': 'login-username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Password',
@@ -18,9 +19,11 @@ class UserLoginForm(AuthenticationForm):
 
 class RegistrationForm(forms.ModelForm):
     user_name = forms.CharField(
-        label='Enter Username', min_length=4, max_length=50, help_text='Required')
-    email = forms.EmailField(max_length=100, help_text='Required', error_messages={
-                             'required': 'Sorry, you will need an email'})
+        label='Enter Username',
+        min_length=4, max_length=50, help_text='Required')
+    email = forms.EmailField(max_length=100, help_text='Required',
+                             error_messages={
+                              'required': 'Sorry, you will need an email'})
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Repeat password', widget=forms.PasswordInput)
@@ -54,7 +57,8 @@ class RegistrationForm(forms.ModelForm):
         self.fields['user_name'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Username'})
         self.fields['email'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
+            {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name':
+             'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Password'})
         self.fields['password2'].widget.attrs.update(
@@ -63,8 +67,9 @@ class RegistrationForm(forms.ModelForm):
 
 class PwdResetForm(PasswordResetForm):
 
-    email = forms.EmailField(max_length=254, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
+    email = forms.EmailField(max_length=254, widget=forms.TextInput
+                             (attrs={'class': 'form-control mb-3',
+                              'placeholder': 'Email', 'id': 'form-email'}))
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -78,22 +83,38 @@ class PwdResetForm(PasswordResetForm):
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
         label='New password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
+            attrs={'class': 'form-control mb-3',
+                   'placeholder': 'New Password',
+                   'id': 'form-newpass'}))
     new_password2 = forms.CharField(
-        label='Repeat password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
+        label='Repeat password', widget=forms.PasswordInput
+              (attrs={'class': 'form-control mb-3',
+                      'placeholder': 'New Password',
+                      'id': 'form-new-pass2'}))
 
 
 class UserEditForm(forms.ModelForm):
 
-    email = forms.EmailField(label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
+    email = forms.EmailField(label='Account email (can not be changed)',
+                             max_length=200,
+                             widget=forms.TextInput
+                             (attrs={'class': 'form-control mb-3',
+                                     'placeholder': 'email',
+                                     'id': 'form-email',
+                                     'readonly': 'readonly'}))
 
-    user_name = forms.CharField(label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
+    user_name = forms.CharField(label='Firstname', min_length=4, max_length=50,
+                                widget=forms.TextInput
+                                (attrs={'class': 'form-control mb-3',
+                                        'placeholder': 'Username',
+                                        'id': 'form-firstname',
+                                        'readonly': 'readonly'}))
 
-    first_name = forms.CharField(label='Username', min_length=4, max_length=50, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'form-lastname'}))
+    first_name = forms.CharField(label='Username', min_length=4, max_length=50,
+                                 widget=forms.TextInput
+                                 (attrs={'class': 'form-control mb-3',
+                                         'placeholder': 'Firstname',
+                                         'id': 'form-lastname'}))
 
     class Meta:
         model = UserBase

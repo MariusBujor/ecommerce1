@@ -18,8 +18,8 @@ from .token import account_activation_token
 @login_required
 def dashboard(request):
     orders = user_orders(request)
-    return render(request, 'account/user/dashboard.html', {'section': 'profile', 
-                                                           'orders': orders})
+    return render(request, 'account/user/dashboard.html',
+                  {'section': 'profile', 'orders': orders})
 
 
 @login_required
@@ -62,7 +62,8 @@ def account_register(request):
             # Setup email
             current_site = get_current_site(request)
             subject = 'Activate your Account'
-            message = render_to_string('account/registration/account_activation_email.html', {
+            message = render_to_string
+            ('account/registration/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -72,7 +73,8 @@ def account_register(request):
             return render(request, 'account/registration/success.html')
     else:
         registerForm = RegistrationForm()
-    return render(request, 'account/registration/register.html', {'form': registerForm})
+    return render(request, 'account/registration/register.html',
+                  {'form': registerForm})
 
 
 def account_activate(request, uidb64, token):

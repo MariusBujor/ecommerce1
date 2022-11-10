@@ -21,11 +21,18 @@ def add(request):
             pass
         else:
             order = Order.objects.create(
-                user=request.user, full_name=request.POST.get('full_name'), address1=request.POST.get('address1'), country=request.POST.get('country'), city=request.POST.get('city'), post_code=request.POST.get('post_code'), order_key=order_key, total=carttotal)
+                user=request.user, full_name=request.POST.get('full_name'),
+                address1=request.POST.get('address1'),
+                country=request.POST.get('country'),
+                city=request.POST.get('city'),
+                post_code=request.POST.get('post_code'),
+                order_key=order_key, total=carttotal)
             order_id = order.pk
 
             for item in cart:
-                OrderItem.objects.create(order_id=order_id, product=item['product'], price=item['price'])
+                OrderItem.objects.create(order_id=order_id,
+                                         product=item['product'],
+                                         price=item['price'])
 
         response = JsonResponse({'success': 'Return something'})
         return response

@@ -22,10 +22,12 @@ urlpatterns = [
          TemplateView.as_view(template_name="robots.txt",
                               content_type="text/plain"),
          ),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 handler404 = "core.views.page_not_found_view"
 
 if settings.DEVELOPMENT:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
