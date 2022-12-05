@@ -212,7 +212,11 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
   
   ### Testing User Stories from User Experience (UX) Section
 
-  - All user stories in the list above has been tested and confirmed after implementation.
+  -Testing  PURCHAING AND CHECKOUT
+  - <a href= https://github.com/MariusBujor/ecommerce2/issues/11 target='_blank'>As a shopper, I want to adjust the number of individual items in my bag so I can easily make changes to my purchase before checking out.</a>
+ 
+ When I click the Log in button on the front page as a first-time user, I will be redirected to a Log In page. Here, I can press the Create a new account link to be redirected to a new page. On the new page, I can enter my details and add multiple products to the basket. Once you click on the basket, you will be taken to a basket content page where you can delete one of the items by clicking on the delete button. It was a perfect process from beginning to end.
+
    
   #### robots.txt  
    -  is generateted automaticaly  [Click Here](https://audio-bebe-books.herokuapp.com/robots.txt)
@@ -253,43 +257,45 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
 
    I used Gitpod to write the code for my project, with regular commits to document the creation process. For this project, I deployed it to Heroku and used "git push Heroku master" to ensure that my GitHub pushes were also pushed to Heroku.
 
-      Create an .env that contains these variables :
-      SECRET_KEY=*******
-      DEVELOPMENT=True
-      ENVIRON=DEVELOPMENT
-      STRIPE_PKEY=*******
-      STRIPE_SKEY=*******
+  Create an .env that contains these variables :
+  - SECRET_KEY=*******
+  - DEVELOPMENT=True
+  - ENVIRON=DEVELOPMENT
+  - STRIPE_PKEY=*******
+  - STRIPE_SKEY=*******
 
-  #### Deploy to Heroku
+#### Deploy to Heroku
 
-    To deploy this page to Heroku from its GitHub repository, the following steps were taken:
+To deploy this page to Heroku from its GitHub repository, the following steps were taken:
 
-    Start by installing everything in the requirements.txt file.
-    You should have the corect requirements.txt and Procfile before moving on with the deployment.
-    Log in to Heroku apps
-    On Heroku page go to dashboard then to the "New" menu and choose "Create new app"
-    Create a unique name for your app , select your region and click "Create app".
-    Now the new app's dashboard is opened. Click on the resources tab.
-    Add the Heroku Postgres Add-on.
-    Go to the settings tab and reveal the Config Vars and add :
-    ALLOWED_HOSTS=https://heroku-url
-    CLOUDINARY_URL=cloudinary://cloudinary-url
-    DATABASE_URL=postgres://database_url
-    DEVELOPMENT=False (DEBUG)
-    ENVIRON=PRODUCTION
-    EMAIL_HOST=smtp.server
-    EMAIL_PORT=587
-    EMAIL_HOST_USER=****
-    EMAIL_HOST_PASS=****
-    EMAIL_FROM=email@from
-    SECRET_KEY=****
-    STRIPE_PKEY=****
-    STRIPE_SKEY=****
-    STRIPE_ENDPOINT_SECRET=****
-    Click on "Deploy" and select your deploy method and repository.
-    Click "Connect" on selected repository
-    Click "Deploy Branch" in the manual deploy section. -> Heroku will now deploy the App.
-    Development Environment
+- Start by installing everything in the requirements.txt file.
+- This requirements.txt file is used for specifying what python packages are required to run the project you are looking at.  Typically the requirements.txt file is located in the root directory of your project.
+- You should have the correct requirements.txt and Procfile before moving on with the deployment.
+- Procfile is a file that specifies the commands that are executed. by an Heroku app on startup.
+- Log in to Heroku apps
+- On Heroku page go to dashboard then to the "New" menu and choose "Create new app"
+- Create a unique name for your app , select your region and click "Create app".
+- Now the new app's dashboard is opened. Click on the resources tab.
+- Add the Heroku Postgres Add-on.
+- Go to the settings tab and reveal the Config Vars and add :
+    - ALLOWED_HOSTS=https://heroku-url
+    - CLOUDINARY_URL=cloudinary://cloudinary-url
+    - DATABASE_URL=postgres://database_url
+    - DEVELOPMENT=False (DEBUG)
+    - ENVIRON=PRODUCTION
+    - EMAIL_HOST=smtp.server
+    - EMAIL_PORT=587
+    - EMAIL_HOST_USER=****
+    - EMAIL_HOST_PASS=****
+    - EMAIL_FROM=email@from
+    - SECRET_KEY=****
+    - STRIPE_PKEY=****
+    - STRIPE_SKEY=****
+    - STRIPE_ENDPOINT_SECRET=****
+    - Click on "Deploy" and select your deploy method and repository.
+    - Click "Connect" on selected repository
+    - Click "Deploy Branch" in the manual deploy section. -> Heroku will now deploy the App.
+    - Development Environment
 
   ## Credits
 

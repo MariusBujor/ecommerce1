@@ -1,7 +1,6 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
     <meta charset="utf-8">
@@ -33,10 +32,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
     <style>
-        body{
+        body {
             background:linear-gradient(rgba(231, 247, 247, 0.668), rgba(228, 243, 245, 0.651)),
-                        url("{% static '/images/baby_listen_audio_book.jpg' %}") no-repeat fixed center;
-            background-size:cover;
+            url("{% static '/images/baby_listen_audio_book.jpg' %}") no-repeat fixed center;
+            background-size: cover;
         }
     </style>
 </head>
@@ -94,7 +93,7 @@
                     </a>
                     {% else %}
                     <a role="button" href="{% url "account:login" %}"
-                    class="btn btn-outline-secondary border-0 basket-btn">
+                        class="btn btn-outline-secondary border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-door-closed" viewBox="0 0 16 16">
@@ -110,7 +109,8 @@
                     {% comment %} Account link {% endcomment %}
 
                     <a role="button" href="{% url "account:dashboard" %}"
-                    class="btn btn-outline-secondary border-0 basket-btn"><div>
+                        class="btn btn-outline-secondary border-0 basket-btn">
+                        <div>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
@@ -127,8 +127,7 @@
                     </a>
                     {% comment %} CART {% endcomment %}
 
-                    <a role="button" href="{% url "cart:cart_summary" %}"
-                    class="btn btn-outline-secondary">
+                    <a role="button" href="{% url "cart:cart_summary" %}" class="btn btn-outline-secondary">
                         {% with total_qty=cart|length %}
                         <div id="cart-qty" class="cart-qty font-weight-bold text-danger">
                             {% if total_qty > 0 %}
@@ -157,17 +156,17 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error'%}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" id="msg" role="alert">
+                <div class="alert alert-{% if message.tags == 'error'%}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show"
+                    id="msg" role="alert">
                     {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
             </div>
         </div>
-        </div>
-        </div>
         {% endif %}
-        {% block content %} {% endblock %}</div>
+        {% block content %} {% endblock %}
+    </div>
     <hr>
     <!-- Footer -->
     <footer class="container-wrapper">
@@ -223,30 +222,31 @@
                         </div>
 
                         <!-- Bootstrap Toasts -->
-                        
-                        <script src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-                        <script>
-                            (function ($) {
-                                window.fnames = new Array();
-                                window.ftypes = new Array();
-                                fnames[0] = 'EMAIL';
-                                ftypes[0] = 'email';
-                            }(jQuery));
-                            var $mcj = jQuery.noConflict(true);
-                        </script>
-                        <!--End mc_embed_signup-->
+
                     </div>
                 </div>
             </section>
         </div>
         <br>
-        <div class="nav-item"><a target="_blank" href="https://github.com/https://github.com/MariusBujor"
-                class=" nav-link d-block mb-3 text-center" rel="noopener"><i class="fa fa-github fa-lg"></i></a></div>
+        <div class="nav-item">
+            <a target="_blank" href="https://github.com/https://github.com/MariusBujor"
+                class=" nav-link d-block mb-3 text-center" rel="noopener"><i class="fa fa-github fa-lg"></i></a>
+        </div>
         <small class="d-block mb-3 text-center"> Audio Bebe Books &copy;2022</small>
     </footer>
     <!-- /.footer -->
 
+    <script src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script>
+        (function ($) {
+            window.fnames = new Array();
+            window.ftypes = new Array();
+            fnames[0] = 'EMAIL';
+            ftypes[0] = 'email';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+    <!--End mc_embed_signup-->
 </body>
-
 
 </html>

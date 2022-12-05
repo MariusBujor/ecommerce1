@@ -13,7 +13,7 @@ def categories(request):
 
 
 def product_all(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(in_stock=True, is_active=True)
 
     context = {
         'products': products,
@@ -119,7 +119,6 @@ def delete_product(request, product_id):
 
 
 def submit_review(request, pk):
-    url = request.META.get('HTTP_REFERER')
     product = Product.objects.get(pk=pk)
     if request.method == 'POST':
         try:
