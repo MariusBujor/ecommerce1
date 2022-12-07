@@ -3,33 +3,34 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="page-title text-center">
-                    <!-- Page Title -->
-                    <strong>Product Management</strong>
-                </h2>
-                <hr>
-                <h5 class="page-title text-center">Edit a Book : <strong>{{ product.name }}</strong></h5>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <!-- Add Product Form -->
-                <form method="POST" action="{% url 'store:edit_product' product.id %}" class="form mb-2 edit-product-form" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-right">
-                        <!-- Cancel and return to all Products -->
-                        <a class="btn btn-danger rounded-0 cancel" href="{% url 'store:product_all' %}">
-                            Cancel</a>
-                            <!-- Submit Product to Database -->
-                        <button class="btn-success rounded-0 add-product" type="submit">Update Book</button>
-                    </div>
-                </form>
-            </div>            
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="page-title text-center">
+                <!-- Page Title -->
+                <strong>Product Management</strong>
+            </h2>
+            <hr>
+            <h5 class="page-title text-center">Edit a Book : <strong>{{ product.name }}</strong></h5>
         </div>
     </div>
-{% endblock %} 
+
+    <div class="row">
+        <div class="col-12">
+            <!-- Add Product Form -->
+            <form method="POST" action="{% url 'store:edit_product' product.id %}" class="form mb-2 edit-product-form"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-right">
+                    <!-- Cancel and return to all Products -->
+                    <a class="btn btn-danger rounded-0 cancel" href="{% url 'store:product_all' %}">
+                        Cancel</a>
+                    <!-- Submit Product to Database -->
+                    <button class="btn-success rounded-0 add-product" type="submit">Update Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

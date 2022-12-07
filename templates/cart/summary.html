@@ -8,35 +8,35 @@
 
 
 <main class="pt-5">
-<div class="container">
+  <div class="container">
     <h1 class="h2">Shopping Cart</h1>
   </div>
-<div class="container">
-  <div class="row g-3">
-    {% if cart|length == 0 %}
-    <div class="col-12">Your basket is empty <a href="{% url "store:product_all" %}">Shop</a></div> 
-    {% else %}
-    <div class="col-12 bg-light p-3 d-flex justify-content-between">
-      <div class="d-flex d-flex-inline">
-        <div class="pe-3">Order</div>
-        <div class="dropdown">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+  <div class="container">
+    <div class="row g-3">
+      {% if cart|length == 0 %}
+      <div class="col-12">Your basket is empty <a href="{% url "store:product_all" %}">Shop</a></div>
+      {% else %}
+      <div class="col-12 bg-light p-3 d-flex justify-content-between">
+        <div class="d-flex d-flex-inline">
+          <div class="pe-3">Order</div>
+          <div class="dropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
               class="bi bi-chevron-down" viewBox="0 0 16 16">
             </svg>
             </a>
           </div>
+        </div>
+        <div class="text-end">
+          <div class="">Total : <span class="fw-bold">€</span>
+            <div id="subtotal" class="d-inline-flex fw-bold">{{cart.get_subtotal_price}}</div>
           </div>
-            <div class="text-end">
-              <div class="">Total : <span class="fw-bold">€</span>
-                <div id="subtotal" class="d-inline-flex fw-bold">{{cart.get_subtotal_price}}</div>
-              </div>
-              <div id=""><span class="small"></span><span class="fw-bold"></span></div>
-            </div>
-          </div>
-          <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
-            <div class="d-grid gap-2">
-              <a role="button" href="{% url "checkout" %}" class="btn btn-success fw-bold" type="button">Checkout</a>
+          <div id=""><span class="small"></span><span class="fw-bold"></span></div>
+        </div>
       </div>
+      <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
+        <div class="d-grid gap-2">
+          <a role="button" href="{% url "checkout" %}" class="btn btn-success fw-bold" type="button">Checkout</a>
+        </div>
       </div>
       <div class="col-md-7 col-lg-8 p-0">
         {% for item in cart %}
@@ -45,72 +45,71 @@
           <div class="row g-0">
             <div class="col-md-2 d-none d-md-block">
               <img class="img-fluid mx-auto d-block" alt="Responsive image" src="{{ product.image.url }}" />
-                </div>
-                <div class="col-md-10 ps-md-3"> 
-                  <div class="card-body p-1">
-                    <a class="text-decoration-none text-reset" href="{{item.product.get_absolute_url}}">
-                      <p class="card-text pb-3">{{product.title}}</p>
-                    </a>
-                    <a id="delete-button" data-index="{{product.id}}"
-                    class="delete-button text-decoration-none small">Delete</a>
-                    <br>
-                    <span class="h6 fw-bold"> €{{ product.price }}</span>
+            </div>
+            <div class="col-md-10 ps-md-3">
+              <div class="card-body p-1">
+                <a class="text-decoration-none text-reset" href="{{item.product.get_absolute_url}}">
+                  <p class="card-text pb-3">{{product.title}}</p>
+                </a>
+                <a id="delete-button" data-index="{{product.id}}"
+                  class="delete-button text-decoration-none small">Delete</a>
+                <br>
+                <span class="h6 fw-bold"> €{{ product.price }}</span>
               </div>
             </div>
           </div>
         </div>
-    {% endwith %}
-    {% endfor %}
-        </div>
-        {% endif %}
+        {% endwith %}
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
-    </div>
+  </div>
 </main>
 <script>
   //Delete Item
   $(document).on('click', '.delete-button', function (e) {
-      e.preventDefault();
-      var prodid = $(this).data('index');
-      $.ajax({
-          type: 'POST',
-          url: '{% url "cart:cart_delete" %}',
-          data: {
-              productid: $(this).data('index'),
-              csrfmiddlewaretoken: "{{csrf_token}}",
-              action: 'post'
-          },
-          success: function (json){
-            $('.product-item[data-index="'+ prodid +'"]').remove();
-            document.getElementById("subtotal").innerHTML = json.subtotal;
-            document.getElementById("cart-qty").innerHTML = json.qty;
-          },
-          error: function (xhr, errmsg, err) {}  
-      });
+    e.preventDefault();
+    var prodid = $(this).data('index');
+    $.ajax({
+      type: 'POST',
+      url: '{% url "cart:cart_delete" %}',
+      data: {
+        productid: $(this).data('index'),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: 'post'
+      },
+      success: function (json) {
+        $('.product-item[data-index="' + prodid + '"]').remove();
+        document.getElementById("subtotal").innerHTML = json.subtotal;
+        document.getElementById("cart-qty").innerHTML = json.qty;
+      },
+      error: function (xhr, errmsg, err) {}
+    });
   })
 
 
-// Update Item
+  // Update Item
 
   $(document).on('click', '.update-button', function (e) {
-      e.preventDefault();
-      var prodid = $(this).data('index');
-      $.ajax({
-          type: 'POST',
-          url: '{% url "cart:cart_update" %}',
-          data: {
-              productid: $(this).data('index'),
-              productqty: $('#select'+ prodid +' optionselected').text(),
-              csrfmiddlewaretoken: "{{csrf_token}}",
-              action: 'post'
-          },
-          success: function (json){
-            document.getElementById("cart-qty").innerHTML = json.qty
-            document.getElementById("subtotal").innerHTML = json.subtotal
-          },
-          error: function (xhr, errmsg, err) {}  
-      });
+    e.preventDefault();
+    var prodid = $(this).data('index');
+    $.ajax({
+      type: 'POST',
+      url: '{% url "cart:cart_update" %}',
+      data: {
+        productid: $(this).data('index'),
+        productqty: $('#select' + prodid + ' optionselected').text(),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: 'post'
+      },
+      success: function (json) {
+        document.getElementById("cart-qty").innerHTML = json.qty
+        document.getElementById("subtotal").innerHTML = json.subtotal
+      },
+      error: function (xhr, errmsg, err) {}
+    });
   })
-
 </script>
 
 {% endblock %}
