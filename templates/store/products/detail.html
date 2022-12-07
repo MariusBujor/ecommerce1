@@ -1,9 +1,10 @@
 {% extends "store/base.html" %}
+{% block extra_title %}{{ product.name }}{%endblock %}
+{% comment %} {% block title %}
 
-{% block title %}
-{{ product.name }}
-{% endblock %}
+{% endblock %} {% endcomment %}
 {% block content %}
+
 <div class='container'>
     <main class="pt-5">
         <div class="row g-3">
