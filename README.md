@@ -231,7 +231,22 @@ Audio Bebe Books is primarily intended for kids who like to listen to stories:
 
   * HTML
 
-    ![](media/images/testing/html.PNG) 
+    ![](media/images/testing/html.PNG)
+
+    https://audio-bebe-books.herokuapp.com/search/bed-time/
+    https://audio-bebe-books.herokuapp.com/cart/  
+    https://audio-bebe-books.herokuapp.com/item/test/ 
+    https://audio-bebe-books.herokuapp.com/orders/checkout/
+    https://audio-bebe-books.herokuapp.com/add/
+    https://audio-bebe-books.herokuapp.com/edit/12/
+    https://audio-bebe-books.herokuapp.com/delete/12/
+    https://audio-bebe-books.herokuapp.com/account/dashboard/
+    https://audio-bebe-books.herokuapp.com/account/login/
+
+    ERROR found on :
+    https://audio-bebe-books.herokuapp.com/account/register/ from mailchimp form
+    At line 195, column 133
+    r="E-mail" name="email" id="id
 
   * CSS
 
