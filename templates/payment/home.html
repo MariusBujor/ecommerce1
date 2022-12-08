@@ -76,12 +76,9 @@
     </div>
 </div>
 <script>
-    {
-        % comment %
-    }
+    {% comment %}
     Make csrf token availble in JS files {
-        % endcomment %
-    }
+        {% endcomment %}
     var CSRF_TOKEN = '{{ csrf_token }}';
     let addOrderUrl = "{% url 'add' %}"
 </script>
