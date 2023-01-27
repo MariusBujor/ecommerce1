@@ -21,7 +21,7 @@ DEBUG = DEVELOPMENT
 
 ENVIRONMENT = env('ENVIRON', default='DEVELOPMENT')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', 'web-production-d4e6.up.railway.app', default='*').split(",")
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(",")
 
 # Application definition
 
